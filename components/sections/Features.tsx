@@ -51,7 +51,7 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="py-16 md:py-24 bg-white relative overflow-hidden">
+    <section id="features" className="py-16 md:py-24 bg-islamic-light relative overflow-hidden">
       {/* Subtle pattern */}
       <div className="absolute inset-0 islamic-pattern opacity-5" />
       

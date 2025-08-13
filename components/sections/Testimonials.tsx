@@ -60,7 +60,7 @@ export function Testimonials() {
   }, [emblaApi, onSelect])
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 bg-gradient-to-b from-cream-50 to-white relative overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-24 bg-islamic-light relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -169,7 +169,7 @@ export function Testimonials() {
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
   return (
-    <Card className="p-5 md:p-6 h-full border-0 shadow-lg bg-white relative overflow-hidden">
+    <Card className="p-5 md:p-6 h-full border-0 shadow-lg bg-islamic-light relative overflow-hidden">
       {/* Quote icon */}
       <Quote className="absolute top-3 right-3 md:top-4 md:right-4 w-6 h-6 md:w-8 md:h-8 text-gold-200" />
       

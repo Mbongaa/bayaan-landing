@@ -7,7 +7,7 @@ import PublicDisplayPreview from "@/components/preview/PublicDisplayPreview"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-cream-50 to-cream-100 pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-islamic-light pt-20">
       {/* Islamic geometric pattern background - lighter on mobile */}
       <div className="absolute inset-0 islamic-pattern opacity-20 md:opacity-30" />
       

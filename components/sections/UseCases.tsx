@@ -38,7 +38,7 @@ const useCases = [
 
 export function UseCases() {
   return (
-    <section id="use-cases" className="py-16 md:py-24 bg-white relative overflow-hidden">
+    <section id="use-cases" className="py-16 md:py-24 bg-islamic-light relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

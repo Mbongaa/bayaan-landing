@@ -84,7 +84,7 @@ export function Pricing() {
   }, [emblaApi, onSelect])
 
   return (
-    <section id="pricing" className="py-16 md:py-24 bg-white relative overflow-hidden">
+    <section id="pricing" className="py-16 md:py-24 bg-islamic-light relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -186,7 +186,7 @@ function PricingCard({ plan }: { plan: typeof plans[0] }) {
     <Card className={`p-6 md:p-8 h-full border-0 shadow-lg relative overflow-hidden ${
       plan.highlighted 
         ? "shadow-2xl border-2 border-islamic-primary bg-gradient-to-br from-white to-emerald-50" 
-        : "bg-white"
+        : "bg-islamic-light"
     }`}>
       {plan.badge && (
         <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gold-400 text-white text-xs">
@@ -217,7 +217,7 @@ function PricingCard({ plan }: { plan: typeof plans[0] }) {
         className={`w-full ${
           plan.highlighted 
             ? "bg-islamic-primary hover:bg-islamic-primary/90 text-white shadow-lg" 
-            : "bg-white border-2 border-islamic-primary text-islamic-primary hover:bg-islamic-primary/5"
+            : "bg-islamic-light border-2 border-islamic-primary text-islamic-primary hover:bg-islamic-primary/5"
         } py-5 md:py-6 text-sm md:text-base`}
         onClick={() => {
           if (plan.name === "Community") {

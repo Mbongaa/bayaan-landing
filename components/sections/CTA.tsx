@@ -61,7 +61,7 @@ export function CTA() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg"
-              className="bg-white text-islamic-primary hover:bg-cream-50 px-8 py-6 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all font-semibold"
+              className="bg-islamic-light text-islamic-primary hover:bg-cream-100 px-8 py-6 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all font-semibold"
               onClick={() => {
                 const element = document.getElementById('pricing')
                 if (element) {
@@ -75,7 +75,7 @@ export function CTA() {
             <Button 
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-lg rounded-full"
+              className="border-2 border-islamic-light text-islamic-light hover:bg-islamic-light/10 px-8 py-6 text-lg rounded-full"
               onClick={() => alert('Demo scheduling coming soon! Contact us at demo@bayaan.io')}
             >
               Schedule a Demo
