@@ -108,7 +108,7 @@ export function UseCases() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12 md:mt-16 text-center bg-gradient-to-r from-islamic-primary/5 to-gold-400/5 rounded-xl md:rounded-2xl p-8 md:p-12"
+          className="mt-12 md:mt-16 text-center bg-transparent rounded-xl md:rounded-2xl p-8 md:p-12"
         >
           <p className="text-xl md:text-2xl font-arabic text-islamic-primary mb-3 md:mb-4">
             "وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِّلْعَالَمِينَ"

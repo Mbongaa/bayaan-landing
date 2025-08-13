@@ -313,12 +313,12 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Hero visual - Public Display Preview */}
+        {/* Hero visual - Public Display Preview - Hidden on mobile */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.8, duration: 0.8 }}
-          className="mt-12 md:mt-20 relative px-4 sm:px-0"
+          className="hidden lg:block mt-12 md:mt-20 relative px-4 sm:px-0"
         >
           <div className="relative mx-auto max-w-5xl">
             <div className="aspect-video">

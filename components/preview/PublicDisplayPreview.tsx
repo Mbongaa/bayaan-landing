@@ -201,17 +201,17 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
       className={`relative w-full h-full ${className}`}
       style={{ backgroundColor: colors.background }}
     >
-      {/* Sound Button Animation Overlay - Absolute positioned at page level */}
+      {/* Sound Button Animation Overlay - Desktop only to prevent mobile viewport expansion */}
       <AnimatePresence>
-        {soundAnimationPhase > 0 && !hasInteractedWithSound && (
+        {soundAnimationPhase > 0 && !hasInteractedWithSound && !isMobile && (
           <div 
             className="absolute pointer-events-none"
             style={{
               // Position to center on the sound button (top-right of camera box)
               // Camera starts at 13vh + 1rem from top, sound button is 16px from top + half button height (20px)
-              top: !isMobile ? 'calc(13vh + 1rem + 16px + 20px)' : 'calc(13vh + 30vh + 1rem - 36px)', 
+              top: 'calc(13vh + 1rem + 16px + 20px)',
               // The sound button is in the top-right: camera width (40%) - padding (16px) - button position from right (approx 50px for "Imam Camera" + button)
-              left: !isMobile ? 'calc(40% - 50px)' : 'calc(100% - 50px)',
+              left: 'calc(40% - 50px)',
               zIndex: 9999
             }}
           >

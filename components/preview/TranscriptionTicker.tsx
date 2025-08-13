@@ -40,19 +40,22 @@ export default function TranscriptionTicker({ words, isDark, colors }: Transcrip
   }, [transcriptionText])
 
   return (
-    <div className="transcription-container w-[calc(100vw-3rem)] mx-auto p-3 sm:p-4 md:p-6 h-full">
+    <div className="transcription-container w-full mx-auto p-3 sm:p-4 md:p-6 h-full" style={{ contain: 'layout style paint' }}>
       <div 
         ref={containerRef}
         className="relative overflow-hidden h-full flex items-center"
+        style={{ willChange: 'auto' }}
       >
         <div 
           ref={textRef}
-          className="absolute whitespace-nowrap transition-transform duration-300 ease-out"
+          className="absolute whitespace-nowrap"
           dir="rtl"
           style={{
             right: 0,
             top: '50%',
             transform: 'translateY(-50%)',
+            transition: 'transform 300ms ease-out',
+            willChange: 'transform',
             fontSize: 'clamp(1.2rem, 2.5vw, 2rem)',
             color: colors.foreground,
             fontWeight: 500,
