@@ -27,6 +27,7 @@ const plans = [
     cta: "Get Started",
     highlighted: false,
     includedHours: 8,
+    badge: undefined as string | undefined,
   },
   {
     name: "Professional",
@@ -47,10 +48,12 @@ const plans = [
     cta: "Start Trial",
     highlighted: true,
     includedHours: 20,
+    badge: "Most Popular",
   },
   {
     name: "Religious Center",
     price: "Custom",
+    period: undefined as string | undefined,
     description: "For Islamic centers with daily programs and extensive educational activities",
     features: [
       "Pay-as-you-go model",
@@ -62,8 +65,11 @@ const plans = [
       "SLA guarantee",
       "Training sessions",
     ],
+    additionalInfo: undefined as string | undefined,
     cta: "Contact Sales",
     highlighted: false,
+    includedHours: undefined as number | undefined,
+    badge: undefined as string | undefined,
   },
 ]
 
