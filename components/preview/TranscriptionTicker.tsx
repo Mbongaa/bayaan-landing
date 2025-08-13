@@ -53,9 +53,9 @@ export default function TranscriptionTicker({ words, isDark, colors }: Transcrip
             right: 0,
             top: '50%',
             transform: 'translateY(-50%)',
-            fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+            fontSize: 'clamp(1.2rem, 2.5vw, 2rem)',
             color: colors.foreground,
-            fontWeight: 600,
+            fontWeight: 500,
             fontFamily: "'Noto Sans Arabic', system-ui, sans-serif",
             textShadow: isDark 
               ? '0 2px 8px rgba(0, 0, 0, 0.3)' 

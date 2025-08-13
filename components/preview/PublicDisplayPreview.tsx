@@ -47,19 +47,26 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
         setArabicWords(prev => [...prev, demoData.arabicWords[wordIndex]]);
         wordIndex++;
       } else {
-        // Loop back to beginning after a pause
-        setTimeout(() => {
-          wordIndex = 0;
-          setArabicWords([]);
-        }, 3000);
+        // Stop adding words when we reach the end
+        // The video loop will handle the reset
+        if (wordIntervalRef.current) {
+          clearInterval(wordIntervalRef.current);
+          wordIntervalRef.current = null;
+        }
       }
     };
 
-    // Start adding words immediately
-    const wordInterval = setInterval(addWord, 600); // Add a word every 600ms
+    // Add 2 second delay to simulate real-world processing delay
+    const delayTimeout = setTimeout(() => {
+      wordIntervalRef.current = setInterval(addWord, 600); // Add a word every 600ms
+    }, 2000); // 2 second delay before starting transcription
     
     return () => {
-      clearInterval(wordInterval);
+      clearTimeout(delayTimeout);
+      if (wordIntervalRef.current) {
+        clearInterval(wordIntervalRef.current);
+        wordIntervalRef.current = null;
+      }
     };
   }, [isDevMode]);
 
@@ -67,9 +74,18 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
   useEffect(() => {
     if (!isDevMode) return;
 
-    // Find current segment based on video time
+    // Don't process translations until 2 seconds have passed (processing delay)
+    if (videoTimeRef.current < 2.0) {
+      return;
+    }
+
+    // Add 2 second delay to simulate real-world processing delay
+    // Adjust the time check to account for the delay
+    const adjustedTime = videoTimeRef.current - 2.0;
+    
+    // Find current segment based on adjusted video time
     const segment = timedTranscript.find(
-      s => videoTimeRef.current >= s.startTime && videoTimeRef.current < s.endTime
+      s => adjustedTime >= s.startTime && adjustedTime < s.endTime
     );
 
     // Only process if we have a new segment
@@ -108,11 +124,29 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
     // Check if video has looped/reset (time jumped backwards significantly)
     if (videoTimeRef.current > 60 && time < 5) {
       console.log('Video reset detected, clearing displays');
-      // Reset everything when video loops
+      // Reset everything immediately when video loops
       setArabicWords([]);
       setTranslations([]);
       setProcessedSegments(new Set());
       setCurrentSegment(null);
+      
+      // Clear the word interval if it exists
+      if (wordIntervalRef.current) {
+        clearInterval(wordIntervalRef.current);
+        wordIntervalRef.current = null;
+      }
+      
+      // Restart the Arabic words with 2 second delay
+      setTimeout(() => {
+        let wordIndex = 0;
+        const addWord = () => {
+          if (wordIndex < demoData.arabicWords.length) {
+            setArabicWords(prev => [...prev, demoData.arabicWords[wordIndex]]);
+            wordIndex++;
+          }
+        };
+        wordIntervalRef.current = setInterval(addWord, 600);
+      }, 2000);
     }
     
     videoTimeRef.current = time;
@@ -139,25 +173,41 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
       {/* Main container with exact padding like original */}
       <div className="relative h-full flex flex-col p-4 md:p-6">
         
-        {/* Top Section - Arabic Transcription (15vh like original) */}
-        <div className="h-[15vh] min-h-[80px] mb-4">
+        {/* Top Section - Arabic Transcription (reduced height and subtler) */}
+        <motion.div 
+          className="h-[13vh] min-h-[70px] mb-4 opacity-70"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 0.7, y: 0 }}
+          transition={{ 
+            duration: 0.6, 
+            ease: [0.23, 1, 0.32, 1],
+            delay: 0.6 // After title (0.3s) + buffer
+          }}
+        >
           <TranscriptionTicker 
             words={arabicWords}
             isDark={isDark}
             colors={colors}
           />
-        </div>
+        </motion.div>
 
         {/* Bottom Section - Camera + Translations (remaining height) */}
-        <div className="h-[calc(100%-15vh-1rem)] flex flex-col lg:flex-row gap-4">
+        <div className="h-[calc(100%-13vh-1rem)] flex flex-col lg:flex-row gap-4">
           
           {/* Camera Feed (40% width on desktop, full on mobile) */}
-          <div 
+          <motion.div 
             className="relative h-[30vh] lg:h-full rounded-xl shadow-inner overflow-hidden flex-shrink-0" 
             style={{ 
               backgroundColor: colors.cameraBackground,
               width: !isMobile ? '40%' : '100%',
               minHeight: '200px'
+            }}
+            initial={{ opacity: 0, scale: 0.9, x: -50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ 
+              duration: 0.7, 
+              ease: [0.23, 1, 0.32, 1],
+              delay: 0.8 // After transcription box
             }}
           >
             <CameraPreview 
@@ -165,12 +215,20 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
               colors={colors} 
               onTimeUpdate={handleVideoTimeUpdate}
             />
-          </div>
+          </motion.div>
 
           {/* Translation Cards (60% width on desktop, full on mobile) */}
-          <div className="h-full flex flex-col overflow-hidden transition-[width] duration-75"
+          <motion.div 
+            className="h-full flex flex-col overflow-hidden transition-[width] duration-75"
             style={{
               width: !isMobile ? '60%' : '100%'
+            }}
+            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ 
+              duration: 0.7, 
+              ease: [0.23, 1, 0.32, 1],
+              delay: 1.0 // After camera box
             }}
           >
             <TranslationCards 
@@ -178,7 +236,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
               isDark={isDark}
               colors={colors}
             />
-          </div>
+          </motion.div>
         </div>
 
 

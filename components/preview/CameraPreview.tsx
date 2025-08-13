@@ -74,69 +74,63 @@ export default function CameraPreview({ isDark, colors, onTimeUpdate }: CameraPr
         }}
       />
 
-      {/* Recording indicator */}
-      <motion.div 
-        className="absolute top-4 left-4 flex items-center gap-2"
-        animate={{ opacity: [0.7, 1, 0.7] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <Circle className="w-3 h-3 fill-red-500 text-red-500" />
-        <span className="text-xs font-medium text-white drop-shadow-lg">REC</span>
-      </motion.div>
-
-      {/* Sound Toggle Button */}
-      <button
-        onClick={toggleSound}
-        className="absolute top-4 right-4 p-2 rounded-full backdrop-blur-sm transition-all hover:scale-110"
-        style={{
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          border: '1px solid rgba(255, 255, 255, 0.2)'
-        }}
-        aria-label={isMuted ? "Unmute sound" : "Mute sound"}
-      >
-        {isMuted ? (
-          <VolumeX className="w-5 h-5 text-white" />
-        ) : (
-          <Volume2 className="w-5 h-5 text-white" />
-        )}
-      </button>
-
-      {/* Audio indicator */}
-      <div className="absolute bottom-4 right-4">
-        <motion.div
-          className="flex items-center gap-1"
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
+      {/* LIVE indicator and Mosque Name - Top Left */}
+      <div className="absolute top-4 left-4 flex items-center gap-3">
+        <motion.div 
+          className="flex items-center gap-2 px-3 py-1 rounded backdrop-blur-sm"
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }}
+          animate={{ opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 2, repeat: Infinity }}
         >
-          <Mic className="w-4 h-4 text-white drop-shadow-lg" />
-          <div className="flex gap-0.5">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <motion.div
-                key={i}
-                className="w-1 bg-green-400 rounded-full"
-                animate={{
-                  height: ['4px', '16px', '4px']
-                }}
-                transition={{
-                  duration: 0.5,
-                  repeat: Infinity,
-                  delay: i * 0.1
-                }}
-              />
-            ))}
-          </div>
+          <Circle className="w-2 h-2 fill-red-500 text-red-500" />
+          <span className="text-sm font-medium text-white">LIVE</span>
         </motion.div>
+        
+        <span 
+          className="text-sm font-medium px-3 py-1 rounded backdrop-blur-sm"
+          style={{ 
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            color: '#fff',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }}
+        >
+          Al Fourqaan
+        </span>
       </div>
 
-      {/* Camera label */}
-      <div 
-        className="absolute bottom-4 left-4 text-xs font-medium px-2 py-1 rounded"
-        style={{ 
-          backgroundColor: isDark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.8)',
-          color: isDark ? '#fff' : colors.text
-        }}
-      >
-        Imam Camera
+      {/* Sound Toggle Button and Camera Label - Top Right */}
+      <div className="absolute top-4 right-4 flex items-center gap-3">
+        {/* Camera label */}
+        <span 
+          className="text-sm font-medium px-3 py-1 rounded backdrop-blur-sm"
+          style={{ 
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            color: '#fff',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }}
+        >
+          Imam Camera
+        </span>
+        
+        {/* Sound Toggle Button */}
+        <button
+          onClick={toggleSound}
+          className="p-2 rounded-full backdrop-blur-sm transition-all hover:scale-110"
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            border: '1px solid rgba(255, 255, 255, 0.2)'
+          }}
+          aria-label={isMuted ? "Unmute sound" : "Mute sound"}
+        >
+          {isMuted ? (
+            <VolumeX className="w-5 h-5 text-white" />
+          ) : (
+            <Volume2 className="w-5 h-5 text-white" />
+          )}
+        </button>
       </div>
     </div>
   )
