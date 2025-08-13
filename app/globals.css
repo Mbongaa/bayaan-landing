@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Quranic Display inspired theme - warm cream and golden tones */
+    --background: 20 42% 98%; /* #fdf1f4 - warm cream background */
+    --foreground: 180 43% 13%; /* #0a3a3a - deep teal text */
+    
+    --card: 0 0% 100%; /* pure white for cards */
+    --card-foreground: 180 43% 13%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 43% 13%;
+    
+    --primary: 35 47% 58%; /* #d4a574 - golden primary */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 35 47% 68%; /* lighter gold */
+    --secondary-foreground: 180 43% 13%;
+    
+    --muted: 180 10% 50%; /* muted teal */
+    --muted-foreground: 180 10% 30%;
+    
+    --accent: 35 47% 58%; /* golden accent */
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 180 10% 90%; /* soft teal border */
+    --input: 180 10% 95%;
+    --ring: 35 47% 58%; /* golden focus ring */
+    
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    --background: 180 20% 8%; /* deep teal background */
+    --foreground: 20 42% 95%; /* warm cream text */
+    
+    --card: 180 20% 12%;
+    --card-foreground: 20 42% 95%;
+    
+    --popover: 180 20% 12%;
+    --popover-foreground: 20 42% 95%;
+    
+    --primary: 35 47% 48%; /* golden primary darker */
+    --primary-foreground: 20 42% 95%;
+    
+    --secondary: 35 47% 58%; /* golden secondary */
+    --secondary-foreground: 180 43% 13%;
+    
+    --muted: 180 10% 25%;
+    --muted-foreground: 20 20% 70%;
+    
+    --accent: 35 47% 48%; /* golden accent */
+    --accent-foreground: 20 42% 95%;
+    
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 20 42% 95%;
+    
+    --border: 180 15% 20%;
+    --input: 180 15% 20%;
+    --ring: 35 47% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Noto Sans Arabic', system-ui, sans-serif;
+  }
+  
+  /* Arabic font for transcription - same as original */
+  .font-arabic {
+    font-family: 'Noto Sans Arabic', system-ui, sans-serif;
+    line-height: 1.8;
+  }
+}
+
+@layer components {
+  .gradient-islamic {
+    @apply bg-gradient-to-br from-[#0a3a3a] via-[#2b6e5c] to-[#0a3a3a];
+  }
+  
+  .gradient-gold {
+    @apply bg-gradient-to-r from-[#d4a574] via-[#e0b584] to-[#d4a574];
+  }
+  
+  .gradient-huemint {
+    background: linear-gradient(135deg, #fdf1f4 0%, #f9c295 50%, #f8fdfc 100%);
+  }
+  
+  .gradient-huemint-animated {
+    background: linear-gradient(135deg, #fdf1f4 0%, #f9c295 50%, #f8fdfc 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .islamic-pattern {
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(212, 165, 116, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  /* Transcription container styling EXACTLY from original */
+  .transcription-container {
+    border-radius: 0.75rem;
+    background-color: transparent;
+    border: none;
+    width: calc(100vw - 3rem);
+    margin: 0 auto;
+  }
+  
+  .translation-text {
+    font-family: 'Noto Sans Arabic', system-ui, sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+  }
+  
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
