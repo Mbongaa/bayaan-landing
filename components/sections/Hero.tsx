@@ -5,6 +5,7 @@ import { ArrowRight, Globe, Mic, Users, Sparkles, ChevronDown, UserPlus, Smartph
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import PublicDisplayPreview from "@/components/preview/PublicDisplayPreview"
+import PublicDisplayPreviewDemo from "@/components/preview/PublicDisplayPreviewDemo"
 
 const steps = [
   {
@@ -321,7 +322,7 @@ export function Hero() {
         >
           <div className="relative mx-auto max-w-5xl">
             <div className="aspect-video">
-              <PublicDisplayPreview className="w-full h-full" />
+              <PublicDisplayPreviewDemo className="w-full h-full" />
             </div>
             
             {/* Label */}

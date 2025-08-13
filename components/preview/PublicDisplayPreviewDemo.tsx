@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import TranscriptionTicker from "./TranscriptionTicker"
-import TranslationCards from "./TranslationCards"
-import CameraPreview from "./CameraPreview"
+import TranscriptionTickerDemo from "./TranscriptionTickerDemo"
+import TranslationCardsDemo from "./TranslationCardsDemo"
+import CameraPreviewDemo from "./CameraPreviewDemo"
 import { demoData, timedTranscript } from "./demoData"
 
 interface PublicDisplayPreviewProps {
@@ -12,7 +12,7 @@ interface PublicDisplayPreviewProps {
   isDark?: boolean
 }
 
-export default function PublicDisplayPreview({ className = "", isDark = false }: PublicDisplayPreviewProps) {
+export default function PublicDisplayPreviewDemo({ className = "", isDark = false }: PublicDisplayPreviewProps) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0)
   const [currentTranslationIndex, setCurrentTranslationIndex] = useState(0)
   const [arabicWords, setArabicWords] = useState<string[]>([])
@@ -346,7 +346,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
             delay: 0.6 // After title (0.3s) + buffer
           }}
         >
-          <TranscriptionTicker 
+          <TranscriptionTickerDemo 
             words={arabicWords}
             isDark={isDark}
             colors={colors}
@@ -372,7 +372,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
               delay: 0.8 // After transcription box
             }}
           >
-            <CameraPreview 
+            <CameraPreviewDemo 
               isDark={isDark} 
               colors={colors} 
               onTimeUpdate={handleVideoTimeUpdate}
@@ -394,7 +394,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
               delay: 1.0 // After camera box
             }}
           >
-            <TranslationCards 
+            <TranslationCardsDemo 
               translations={translations}
               isDark={isDark}
               colors={colors}

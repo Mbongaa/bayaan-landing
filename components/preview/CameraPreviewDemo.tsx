@@ -11,7 +11,7 @@ interface CameraPreviewProps {
   onSoundInteraction?: () => void
 }
 
-export default function CameraPreview({ isDark, colors, onTimeUpdate, onSoundInteraction }: CameraPreviewProps) {
+export default function CameraPreviewDemo({ isDark, colors, onTimeUpdate, onSoundInteraction }: CameraPreviewProps) {
   const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
 

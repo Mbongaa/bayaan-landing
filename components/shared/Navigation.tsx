@@ -97,7 +97,7 @@ export function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             className="cursor-pointer"
           >
-            <span className={`text-2xl md:text-3xl font-bold font-poppins ${isAtTop && !isScrolled ? 'text-islamic-dark' : 'text-islamic-dark'}`}>bayaan</span>
+            <span className={`text-2xl md:text-3xl font-bold font-poppins ${isAtTop && !isScrolled ? 'text-islamic-dark' : 'text-islamic-dark'}`}>bayaan.ai</span>
           </motion.a>
 
           {/* Desktop Navigation */}
