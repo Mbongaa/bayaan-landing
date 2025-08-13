@@ -168,7 +168,7 @@ export default function PublicDisplayPreviewDemo({ className = "", isDark = fals
   return (
     <div 
       className={`relative w-full h-full ${className}`}
-      style={{ backgroundColor: colors.background }}
+      style={{ backgroundColor: 'transparent' }}
     >
       {/* Main container with exact padding like original */}
       <div className="relative h-full flex flex-col p-4 md:p-6">

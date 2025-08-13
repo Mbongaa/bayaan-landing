@@ -40,7 +40,8 @@ export default function CameraPreviewDemo({ isDark, colors, onTimeUpdate, onSoun
       className="relative w-full h-full rounded-xl overflow-hidden shadow-inner"
       style={{ 
         backgroundColor: isDark ? '#000' : colors.card,
-        border: `1px solid ${colors.border}`
+        border: `1px solid ${colors.border}`,
+        boxShadow: '0 4px 20px rgba(212, 165, 116, 0.2)'
       }}
     >
       {/* MP4 Video Loop */}

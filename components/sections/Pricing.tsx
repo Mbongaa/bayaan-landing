@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Check, Sparkles } from "lucide-react"
+import { Check, Sparkles, Clock, DollarSign, Youtube, Zap } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -10,49 +10,55 @@ import { useCallback, useEffect, useState } from "react"
 
 const plans = [
   {
-    name: "Community",
-    price: "Free",
-    description: "Perfect for small mosques starting their digital Dawah journey",
+    name: "Starter",
+    price: "€49.99",
+    period: "/month",
+    description: "Perfect for small mosques with Friday sermons and occasional announcements",
     features: [
-      "Up to 50 concurrent users",
-      "1 translation room",
-      "3 languages",
-      "Basic support",
-      "Community features",
+      "8 transcription hours included",
+      "Full dashboard access",
+      "Session history & playback",
+      "Export to PDF/Word/TXT",
+      "Analytics dashboard",
+      "Multi-language support",
+      "Email support",
     ],
-    cta: "Start Free",
+    additionalInfo: "Additional hours: €6/hour",
+    cta: "Get Started",
     highlighted: false,
+    includedHours: 8,
   },
   {
-    name: "Masjid Pro",
-    price: "$99",
+    name: "Professional",
+    price: "€99",
     period: "/month",
-    description: "For growing mosques expanding their reach and impact",
+    description: "For active mosques with regular programs and expanded digital presence",
     features: [
-      "Up to 500 concurrent users",
-      "5 translation rooms",
-      "Unlimited languages",
+      "20 transcription hours included",
+      "Everything in Starter, plus:",
+      "Donation module (automatic online collection)",
+      "YouTube Live captions integration",
       "Priority support",
-      "Recording & playback",
       "Custom branding",
-      "Analytics dashboard",
+      "Advanced analytics",
       "Dedicated onboarding",
     ],
+    additionalInfo: "Additional hours: €6/hour",
     cta: "Start Trial",
     highlighted: true,
-    badge: "Most Popular",
+    includedHours: 20,
   },
   {
-    name: "Enterprise",
+    name: "Religious Center",
     price: "Custom",
-    description: "For large mosques and Islamic centers with advanced needs",
+    description: "For Islamic centers with daily programs and extensive educational activities",
     features: [
-      "Unlimited concurrent users",
-      "Unlimited rooms",
-      "All languages",
+      "Pay-as-you-go model",
+      "Volume-based pricing",
+      "All Professional features included",
       "24/7 dedicated support",
-      "Advanced analytics",
       "Custom integrations",
+      "Multiple room management",
       "SLA guarantee",
       "Training sessions",
     ],
@@ -148,18 +154,51 @@ export function Pricing() {
           ))}
         </div>
 
+        {/* Additional pricing info */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-12 md:mt-16 bg-white rounded-xl p-6 md:p-8 max-w-4xl mx-auto shadow-lg"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <div>
+              <DollarSign className="w-8 h-8 text-islamic-primary mx-auto mb-2" />
+              <h4 className="font-semibold text-gray-800 mb-1">Transparent Pricing</h4>
+              <p className="text-xs md:text-sm text-gray-600">
+                No hidden fees. Pay only for what you use.
+              </p>
+            </div>
+            <div>
+              <Zap className="w-8 h-8 text-gold-500 mx-auto mb-2" />
+              <h4 className="font-semibold text-gray-800 mb-1">Instant Activation</h4>
+              <p className="text-xs md:text-sm text-gray-600">
+                Start translating within minutes of signup.
+              </p>
+            </div>
+            <div>
+              <Youtube className="w-8 h-8 text-red-500 mx-auto mb-2" />
+              <h4 className="font-semibold text-gray-800 mb-1">Live Streaming</h4>
+              <p className="text-xs md:text-sm text-gray-600">
+                Direct integration with YouTube Live (Pro plan).
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Money-back guarantee - mobile optimized */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-12 md:mt-16 text-center"
+          className="mt-8 md:mt-12 text-center"
         >
           <div className="inline-flex items-center gap-3 md:gap-4 bg-gold-50 px-4 md:px-6 py-3 md:py-4 rounded-full">
             <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-gold-500" />
             <span className="text-sm md:text-base text-gray-700">
-              <strong>30-day money-back guarantee</strong> • No questions asked
+              <strong>30-day money-back guarantee</strong> • No setup fees
             </span>
           </div>
         </motion.div>
@@ -208,10 +247,36 @@ function PricingCard({ plan }: { plan: typeof plans[0] }) {
         {plan.features.map((feature) => (
           <li key={feature} className="flex items-start gap-2.5 md:gap-3">
             <Check className="w-4 h-4 md:w-5 md:h-5 text-islamic-primary mt-0.5 flex-shrink-0" />
-            <span className="text-gray-700 text-xs md:text-sm">{feature}</span>
+            <span className={`text-gray-700 text-xs md:text-sm ${feature.includes('Everything in') ? 'font-semibold' : ''}`}>
+              {feature}
+            </span>
           </li>
         ))}
       </ul>
+
+      {plan.additionalInfo && (
+        <div className="mb-6 p-3 bg-gold-50 rounded-lg border border-gold-200">
+          <div className="flex items-center gap-2">
+            <Clock className="w-4 h-4 text-gold-600" />
+            <span className="text-xs md:text-sm text-gold-700 font-medium">
+              {plan.additionalInfo}
+            </span>
+          </div>
+        </div>
+      )}
+
+      {plan.includedHours && (
+        <div className="mb-6 p-3 bg-emerald-50 rounded-lg border border-emerald-200">
+          <div className="flex items-center justify-between">
+            <span className="text-xs md:text-sm text-emerald-700">
+              Monthly allowance:
+            </span>
+            <span className="text-sm md:text-base font-bold text-emerald-700">
+              {plan.includedHours} hours
+            </span>
+          </div>
+        </div>
+      )}
 
       <Button 
         className={`w-full ${
@@ -220,12 +285,10 @@ function PricingCard({ plan }: { plan: typeof plans[0] }) {
             : "bg-islamic-light border-2 border-islamic-primary text-islamic-primary hover:bg-islamic-primary/5"
         } py-5 md:py-6 text-sm md:text-base`}
         onClick={() => {
-          if (plan.name === "Community") {
-            alert("Starting free plan setup...")
-          } else if (plan.name === "Enterprise") {
+          if (plan.name === "Religious Center") {
             alert("Redirecting to contact sales...")
           } else {
-            alert("Starting free trial...")
+            alert("Starting signup process...")
           }
         }}
       >

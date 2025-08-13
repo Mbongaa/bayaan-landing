@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, Globe, Mic, Users, Sparkles, ChevronDown, UserPlus, Smartphone, Radio, Heart } from "lucide-react"
+import { ArrowRight, Globe, Mic, Users, Sparkles, ChevronDown, UserPlus, Plus, PlayCircle, Monitor } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import PublicDisplayPreview from "@/components/preview/PublicDisplayPreview"
@@ -13,27 +13,27 @@ const steps = [
     icon: UserPlus,
     title: "Create Your Mosque Account",
     description: "Sign up in minutes and set up your mosque profile with room configurations",
-    color: "from-islamic-primary to-emerald-600",
+    color: "from-islamic-primary to-gold-400",
   },
   {
     number: "2",
-    icon: Smartphone,
-    title: "Share QR Code",
-    description: "Generate unique QR codes for your congregation to instantly join translation rooms",
-    color: "from-emerald-600 to-gold-400",
+    icon: Plus,
+    title: "Create Room",
+    description: "Set up the room that listens to your sermon and translates it in real-time",
+    color: "from-islamic-primary to-gold-400",
   },
   {
     number: "3",
-    icon: Radio,
-    title: "Start Broadcasting",
-    description: "Go live with one click - your sermon is instantly translated in real-time",
-    color: "from-gold-400 to-islamic-primary",
+    icon: PlayCircle,
+    title: "Press Go Live Button",
+    description: "Start broadcasting with one click - your sermon is instantly translated",
+    color: "from-islamic-primary to-gold-400",
   },
   {
     number: "4",
-    icon: Heart,
-    title: "Unite Hearts",
-    description: "Watch your diverse congregation understand and connect with every word",
+    icon: Monitor,
+    title: "Launch Display",
+    description: "Open the public display that will be visible for all mosque visitors",
     color: "from-islamic-primary to-gold-400",
   },
 ]
