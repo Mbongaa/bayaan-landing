@@ -34,7 +34,7 @@ export default function TranslationCardsDemo({ translations, isDark, colors }: T
   return (
     <div 
       ref={containerRef}
-      className="flex-1 overflow-y-auto px-6 pb-6 space-y-4 scroll-smooth scrollbar-hide"
+      className="flex-1 overflow-y-auto px-3 pb-3 space-y-2 scroll-smooth scrollbar-hide"
     >
       <AnimatePresence mode="popLayout">
         {translations.length > 0 ? (
@@ -60,7 +60,7 @@ export default function TranslationCardsDemo({ translations, isDark, colors }: T
                 className="relative"
               >
                 <div 
-                  className="rounded-2xl p-6 backdrop-blur-sm transition-all duration-300"
+                  className="rounded-xl p-3 backdrop-blur-sm transition-all duration-300"
                   style={{ 
                     backgroundColor: isLatest ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.6)',
                     border: `1px solid ${isLatest ? 'rgba(10, 58, 58, 0.2)' : 'rgba(10, 58, 58, 0.1)'}`,
@@ -85,7 +85,7 @@ export default function TranslationCardsDemo({ translations, isDark, colors }: T
                       fontFamily: "'Noto Sans Arabic', system-ui, sans-serif",
                       color: colors.foreground,
                       opacity: isLatest ? 1 : 0.8,
-                      fontSize: 'clamp(1.2rem, 2.5vw, 2rem)',
+                      fontSize: '0.875rem',
                       fontStyle: translation.text.includes("'") ? 'italic' : 'normal'
                     }}
                   >

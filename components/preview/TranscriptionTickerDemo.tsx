@@ -40,7 +40,7 @@ export default function TranscriptionTickerDemo({ words, isDark, colors }: Trans
   }, [transcriptionText])
 
   return (
-    <div className="transcription-container w-[calc(100vw-3rem)] mx-auto p-3 sm:p-4 md:p-6 h-full">
+    <div className="transcription-container w-full mx-auto p-2 h-full">
       <div 
         ref={containerRef}
         className="relative overflow-hidden h-full flex items-center"
@@ -53,7 +53,7 @@ export default function TranscriptionTickerDemo({ words, isDark, colors }: Trans
             right: 0,
             top: '50%',
             transform: 'translateY(-50%)',
-            fontSize: 'clamp(1.2rem, 2.5vw, 2rem)',
+            fontSize: '0.875rem',
             color: colors.foreground,
             fontWeight: 500,
             fontFamily: "'Noto Sans Arabic', system-ui, sans-serif",

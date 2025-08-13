@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import TranscriptionTickerDemo from "./TranscriptionTickerDemo"
 import TranslationCardsDemo from "./TranslationCardsDemo"
 import CameraPreviewDemo from "./CameraPreviewDemo"
@@ -24,10 +24,6 @@ export default function PublicDisplayPreviewDemo({ className = "", isDark = fals
   const [processedSegments, setProcessedSegments] = useState<Set<number>>(new Set())
   const videoTimeRef = useRef<number>(0)
   const wordIntervalRef = useRef<NodeJS.Timeout | null>(null)
-  
-  // Sound button animation states
-  const [hasInteractedWithSound, setHasInteractedWithSound] = useState(false)
-  const [soundAnimationPhase, setSoundAnimationPhase] = useState(0)
 
   // Check if mobile
   useEffect(() => {
@@ -38,33 +34,6 @@ export default function PublicDisplayPreviewDemo({ className = "", isDark = fals
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  // Progressive sound button animation phases
-  useEffect(() => {
-    if (hasInteractedWithSound) return;
-
-    // Phase 1: Subtle pulse (starts immediately)
-    setSoundAnimationPhase(1);
-
-    // Phase 2: Ripple waves (after 3 seconds)
-    const phase2Timer = setTimeout(() => {
-      if (!hasInteractedWithSound) {
-        setSoundAnimationPhase(2);
-      }
-    }, 3000);
-
-    // Phase 3: Notification badge (after 6 seconds)
-    const phase3Timer = setTimeout(() => {
-      if (!hasInteractedWithSound) {
-        setSoundAnimationPhase(3);
-      }
-    }, 6000);
-
-    return () => {
-      clearTimeout(phase2Timer);
-      clearTimeout(phase3Timer);
-    };
-  }, [hasInteractedWithSound]);
 
   // Simple word-by-word display for Arabic transcription
   useEffect(() => {
@@ -201,143 +170,12 @@ export default function PublicDisplayPreviewDemo({ className = "", isDark = fals
       className={`relative w-full h-full ${className}`}
       style={{ backgroundColor: colors.background }}
     >
-      {/* Sound Button Animation Overlay - Absolute positioned at page level */}
-      <AnimatePresence>
-        {soundAnimationPhase > 0 && !hasInteractedWithSound && (
-          <div 
-            className="absolute pointer-events-none"
-            style={{
-              // Position to center on the sound button (top-right of camera box)
-              // Camera starts at 13vh + 1rem from top, sound button is 16px from top + half button height (20px)
-              top: !isMobile ? 'calc(13vh + 1rem + 16px + 20px)' : 'calc(13vh + 30vh + 1rem - 36px)', 
-              // The sound button is in the top-right: camera width (40%) - padding (16px) - button position from right (approx 50px for "Imam Camera" + button)
-              left: !isMobile ? 'calc(40% - 50px)' : 'calc(100% - 50px)',
-              zIndex: 9999
-            }}
-          >
-            {/* Phase 2: Ripple Waves */}
-            {soundAnimationPhase >= 2 && (
-              <>
-                {[0, 1, 2].map((index) => (
-                  <motion.div
-                    key={`ripple-${index}`}
-                    className="absolute rounded-full"
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                      border: '2px solid rgba(212, 165, 116, 0.6)',
-                      boxShadow: '0 0 20px rgba(212, 165, 116, 0.3)'
-                    }}
-                    initial={{ scale: 1, opacity: 0 }}
-                    animate={{
-                      scale: [1, 3, 4],
-                      opacity: [0, 0.6, 0]
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      delay: index * 0.5,
-                      repeat: Infinity,
-                      repeatDelay: 0.3,
-                      ease: "easeOut"
-                    }}
-                  />
-                ))}
-              </>
-            )}
-
-            {/* Phase 1: Subtle Pulse Glow */}
-            {soundAnimationPhase >= 1 && (
-              <motion.div
-                className="absolute rounded-full"
-                style={{
-                  width: '50px',
-                  height: '50px',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  background: 'radial-gradient(circle, rgba(212, 165, 116, 0.5) 0%, transparent 70%)',
-                  filter: 'blur(10px)',
-                  willChange: 'transform, opacity'
-                }}
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: [0.3, 0.8, 0.3],
-                  scale: [1, 1.3, 1]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            )}
-
-            {/* Phase 3: Notification Badge with Arrow */}
-            {soundAnimationPhase >= 3 && (
-              <motion.div
-                className="absolute pointer-events-none"
-                style={{
-                  top: '-30px',
-                  left: '50%',
-                  transform: 'translateX(-50%)'
-                }}
-                initial={{ scale: 0, opacity: 0, y: 10 }}
-                animate={{ 
-                  scale: 1,
-                  opacity: 1,
-                  y: 0
-                }}
-                exit={{ scale: 0, opacity: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 500,
-                  damping: 15
-                }}
-              >
-                <motion.div
-                  className="relative px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full shadow-lg"
-                  animate={{
-                    y: [0, -3, 0]
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  style={{
-                    boxShadow: '0 4px 15px rgba(239, 68, 68, 0.4)'
-                  }}
-                >
-                  SOUND ON
-                  {/* Arrow pointing down */}
-                  <div 
-                    className="absolute w-0 h-0"
-                    style={{
-                      bottom: '-6px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      borderLeft: '6px solid transparent',
-                      borderRight: '6px solid transparent',
-                      borderTop: '6px solid rgb(239, 68, 68)'
-                    }}
-                  />
-                </motion.div>
-              </motion.div>
-            )}
-
-          </div>
-        )}
-      </AnimatePresence>
-
       {/* Main container with exact padding like original */}
       <div className="relative h-full flex flex-col p-4 md:p-6">
         
         {/* Top Section - Arabic Transcription (reduced height and subtler) */}
         <motion.div 
-          className="h-[13vh] min-h-[70px] mb-4 opacity-70"
+          className="h-[60px] mb-3 opacity-70"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 0.7, y: 0 }}
           transition={{ 
@@ -354,7 +192,7 @@ export default function PublicDisplayPreviewDemo({ className = "", isDark = fals
         </motion.div>
 
         {/* Bottom Section - Camera + Translations (remaining height) */}
-        <div className="h-[calc(100%-13vh-1rem)] flex flex-col lg:flex-row gap-4">
+        <div className="h-[calc(100%-60px-0.75rem)] flex flex-col lg:flex-row gap-4">
           
           {/* Camera Feed (40% width on desktop, full on mobile) */}
           <motion.div 
@@ -376,7 +214,6 @@ export default function PublicDisplayPreviewDemo({ className = "", isDark = fals
               isDark={isDark} 
               colors={colors} 
               onTimeUpdate={handleVideoTimeUpdate}
-              onSoundInteraction={() => setHasInteractedWithSound(true)}
             />
           </motion.div>
 
