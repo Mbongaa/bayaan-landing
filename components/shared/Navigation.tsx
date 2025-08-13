@@ -98,7 +98,7 @@ export function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             className="cursor-pointer"
           >
-            <span className={`text-2xl md:text-3xl font-bold ${isAtTop && !isScrolled ? 'text-islamic-dark' : 'text-islamic-dark'}`}>bayaan</span>
+            <span className={`text-2xl md:text-3xl font-bold font-poppins ${isAtTop && !isScrolled ? 'text-islamic-dark' : 'text-islamic-dark'}`}>bayaan</span>
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -108,7 +108,7 @@ export function Navigation() {
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`relative py-2 transition-all duration-300 font-medium text-sm xl:text-base ${
+                className={`relative py-2 transition-all duration-300 font-medium font-poppins text-sm xl:text-base ${
                   activeSection === item.href 
                     ? 'text-islamic-primary' 
                     : isAtTop && !isScrolled 
@@ -150,13 +150,13 @@ export function Navigation() {
           <div className="hidden lg:flex items-center gap-4">
             <Button 
               variant="ghost" 
-              className={`${isAtTop && !isScrolled ? 'text-gray-700 hover:bg-gray-100/20' : 'text-islamic-primary hover:bg-islamic-primary/5'}`}
+              className={`font-poppins ${isAtTop && !isScrolled ? 'text-gray-700 hover:bg-gray-100/20' : 'text-islamic-primary hover:bg-islamic-primary/5'}`}
               onClick={() => alert('Login functionality coming soon!')}
             >
               Login
             </Button>
             <Button 
-              className={`${isAtTop && !isScrolled ? 'bg-islamic-primary hover:bg-islamic-primary/90 text-white' : 'bg-islamic-primary hover:bg-islamic-primary/90 text-white'} rounded-full px-6`}
+              className={`font-poppins ${isAtTop && !isScrolled ? 'bg-islamic-primary hover:bg-islamic-primary/90 text-white' : 'bg-islamic-primary hover:bg-islamic-primary/90 text-white'} rounded-full px-6`}
               onClick={() => {
                 const element = document.getElementById('pricing')
                 if (element) {
@@ -197,7 +197,7 @@ export function Navigation() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className={`relative block px-4 py-4 text-lg transition-all duration-300 rounded-lg ${
+                  className={`relative block px-4 py-4 text-lg font-poppins transition-all duration-300 rounded-lg ${
                     activeSection === item.href
                       ? 'bg-islamic-primary/10 text-islamic-primary font-semibold'
                       : 'text-gray-700 hover:bg-islamic-primary/5 hover:text-islamic-primary'
@@ -231,13 +231,13 @@ export function Navigation() {
               <div className="mt-6 space-y-3">
                 <Button 
                   variant="outline" 
-                  className="w-full py-6 text-base"
+                  className="w-full py-6 text-base font-poppins"
                   onClick={() => alert('Login functionality coming soon!')}
                 >
                   Login
                 </Button>
                 <Button 
-                  className="w-full bg-islamic-primary hover:bg-islamic-primary/90 text-white py-6 text-base"
+                  className="w-full bg-islamic-primary hover:bg-islamic-primary/90 text-white py-6 text-base font-poppins"
                   onClick={() => {
                     setIsMobileMenuOpen(false)
                     const element = document.getElementById('pricing')

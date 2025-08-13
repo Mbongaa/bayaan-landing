@@ -31,7 +31,7 @@ export function CTA() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+          <h2 className="text-4xl md:text-6xl font-bold font-poppins mb-6 text-white">
             Transform Your Mosque&apos;s{" "}
             <span className="text-gold-300">Dawah Impact</span> Today
           </h2>

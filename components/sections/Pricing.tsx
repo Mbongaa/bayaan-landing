@@ -96,7 +96,7 @@ export function Pricing() {
           <Badge className="mb-3 md:mb-4 bg-islamic-primary/10 text-islamic-primary border-islamic-primary/20 text-xs md:text-sm">
             Invest in Your Dawah
           </Badge>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 text-islamic-dark">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-poppins mb-3 md:mb-4 text-islamic-dark">
             Plans for Every Mosque
           </h2>
           <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto px-4">

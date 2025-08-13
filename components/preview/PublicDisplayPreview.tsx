@@ -182,19 +182,19 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
         </div>
 
 
-        {/* Live indicator - top right */}
-        <motion.div 
-          className="absolute top-6 right-6 flex items-center gap-2 px-3 py-1.5 rounded-full"
+        {/* Invisible spacer to maintain layout - same dimensions as removed live indicator */}
+        <div 
+          className="absolute top-6 right-6 flex items-center gap-2 px-3 py-1.5 rounded-full invisible"
           style={{ 
-            backgroundColor: 'rgba(239, 68, 68, 0.1)',
-            border: '1px solid rgba(239, 68, 68, 0.3)'
+            backgroundColor: 'transparent',
+            border: '1px solid transparent'
           }}
         >
-          <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-          <span className="text-xs font-medium text-red-600">
+          <div className="w-2 h-2 rounded-full" />
+          <span className="text-xs font-medium">
             LIVE PREVIEW
           </span>
-        </motion.div>
+        </div>
       </div>
     </div>
   )

@@ -103,8 +103,9 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        arabic: ["'Noto Sans Arabic'", "'Amiri'", "sans-serif"],
+        sans: ["'Noto Sans Arabic'", "system-ui", "sans-serif"],
+        arabic: ["'Noto Sans Arabic'", "system-ui", "sans-serif"],
+        poppins: ["'Poppins'", "system-ui", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
