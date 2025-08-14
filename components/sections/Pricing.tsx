@@ -234,7 +234,7 @@ function PricingCard({ plan }: { plan: any }) {
       </div>
 
       <ul className="space-y-2.5 md:space-y-3 mb-6 md:mb-8">
-        {plan.features.map((feature) => (
+        {plan.features.map((feature: string) => (
           <li key={feature} className="flex items-start gap-2.5 md:gap-3">
             <Check className="w-4 h-4 md:w-5 md:h-5 text-islamic-primary mt-0.5 flex-shrink-0" />
             <span className={`text-gray-700 text-xs md:text-sm ${feature.includes('Everything in') ? 'font-semibold' : ''}`}>
