@@ -26,20 +26,6 @@ export function Features() {
       bgColor: "bg-gold-50",
     },
     {
-      icon: BarChart3,
-      title: t.features.cards.analyticsDashboard.title,
-      description: t.features.cards.analyticsDashboard.description,
-      color: "text-emerald-600",
-      bgColor: "bg-emerald-50",
-    },
-    {
-      icon: Users,
-      title: t.features.cards.multiUserManagement.title,
-      description: t.features.cards.multiUserManagement.description,
-      color: "text-gold-500",
-      bgColor: "bg-gold-50",
-    },
-    {
       icon: Radio,
       title: t.features.cards.liveRoomControl.title,
       description: t.features.cards.liveRoomControl.description,
@@ -52,13 +38,6 @@ export function Features() {
       description: t.features.cards.publicDisplayManager.description,
       color: "text-emerald-600",
       bgColor: "bg-emerald-50",
-    },
-    {
-      icon: Lock,
-      title: t.features.cards.secureCloudStorage.title,
-      description: t.features.cards.secureCloudStorage.description,
-      color: "text-gold-500",
-      bgColor: "bg-gold-50",
     },
     {
       icon: Globe,
@@ -254,7 +233,7 @@ export function Features() {
               <div className="text-sm md:text-base text-cream-100">{t.features.stats.transcriptionLanguages}</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-1 md:mb-2">∞</div>
+              <div className="text-3xl md:text-4xl font-bold mb-1 md:mb-2">Unlimited</div>
               <div className="text-sm md:text-base text-cream-100">{t.features.stats.translationLanguages}</div>
             </div>
             <div>

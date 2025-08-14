@@ -251,13 +251,14 @@ export const en: TranslationStructure = {
           yearly: '€470',
         },
         features: [
-          'up to 100 attendees',
           '1 translation room',
           'friday khutbah support',
           'basic analytics',
           'email support',
           'mobile access',
         ],
+        includedHours: '8',
+        additionalInfo: '€7 per hour',
         cta: 'get started',
       },
       professional: {
@@ -269,15 +270,15 @@ export const en: TranslationStructure = {
           yearly: '€950',
         },
         features: [
-          'up to 500 attendees',
           '5 translation rooms',
-          'all event types',
           'advanced analytics',
           'priority support',
           'public display screens',
           'session recording',
           'export & archive',
         ],
+        includedHours: '20',
+        additionalInfo: '€5 per hour',
         cta: 'get started',
       },
       enterprise: {
@@ -285,7 +286,6 @@ export const en: TranslationStructure = {
         description: 'for large mosques and islamic centers with comprehensive needs',
         price: 'custom',
         features: [
-          'unlimited attendees',
           'unlimited rooms',
           'custom integrations',
           'dedicated support',
@@ -294,6 +294,8 @@ export const en: TranslationStructure = {
           'api access',
           'white labeling',
         ],
+        includedHours: 'unlimited',
+        additionalInfo: 'custom pricing',
         cta: 'contact sales',
       },
     },
@@ -324,15 +326,14 @@ export const en: TranslationStructure = {
   cta: {
     title: 'ready to expand your dawah reach?',
     subtitle: 'join mosques worldwide in making islamic knowledge accessible to everyone',
-    primaryButton: 'start your free trial',
+    primaryButton: 'get started today',
     secondaryButton: 'book a demo',
     features: {
       feature1: 'no credit card required',
-      feature2: '14-day free trial',
+      feature2: 'instant activation',
       feature3: 'setup in 5 minutes',
     },
     demoAlert: 'demo scheduling coming soon! contact us at demo@bayaan.io',
-    ramadanOffer: '🌙 Special Ramadan offer: 50% off for the first 3 months',
     blessing: 'May Allah bless you',
   },
 

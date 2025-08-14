@@ -111,33 +111,27 @@ export function Hero() {
             {t.hero.subheadingHighlight}
           </p>
 
-          {/* Key benefits - horizontal scroll on mobile for better UX */}
-          <div className="mb-10">
-            <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 snap-x snap-mandatory no-scrollbar">
-              <div className="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl whitespace-nowrap flex-shrink-0 snap-center shadow-md border border-white/50">
-                <div className="w-8 h-8 rounded-lg bg-islamic-primary/10 flex items-center justify-center">
-                  <Globe className="w-4 h-4 text-islamic-primary" />
+          {/* Key benefits - compact single row */}
+          <div className="mb-10 px-2">
+            <div className="flex justify-center gap-1.5">
+              <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-2.5 py-2 rounded-xl shadow-md border border-white/50">
+                <div className="w-6 h-6 rounded-lg bg-islamic-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Globe className="w-3 h-3 text-islamic-primary" />
                 </div>
-                <span className="text-sm font-medium text-gray-700">{t.hero.benefits.multiLanguage}</span>
+                <span className="text-[11px] font-medium text-gray-700">{t.hero.benefits.multiLanguage}</span>
               </div>
-              <div className="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl whitespace-nowrap flex-shrink-0 snap-center shadow-md border border-white/50">
-                <div className="w-8 h-8 rounded-lg bg-islamic-primary/10 flex items-center justify-center">
-                  <Mic className="w-4 h-4 text-islamic-primary" />
+              <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-2.5 py-2 rounded-xl shadow-md border border-white/50">
+                <div className="w-6 h-6 rounded-lg bg-islamic-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Mic className="w-3 h-3 text-islamic-primary" />
                 </div>
-                <span className="text-sm font-medium text-gray-700">{t.hero.benefits.realTime}</span>
+                <span className="text-[11px] font-medium text-gray-700">{t.hero.benefits.realTime}</span>
               </div>
-              <div className="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl whitespace-nowrap flex-shrink-0 snap-center shadow-md border border-white/50">
-                <div className="w-8 h-8 rounded-lg bg-islamic-primary/10 flex items-center justify-center">
-                  <Users className="w-4 h-4 text-islamic-primary" />
+              <div className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-2.5 py-2 rounded-xl shadow-md border border-white/50">
+                <div className="w-6 h-6 rounded-lg bg-islamic-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Users className="w-3 h-3 text-islamic-primary" />
                 </div>
-                <span className="text-sm font-medium text-gray-700">{t.hero.benefits.inclusive}</span>
+                <span className="text-[11px] font-medium text-gray-700">{t.hero.benefits.inclusive}</span>
               </div>
-            </div>
-            {/* Scroll indicator */}
-            <div className="flex justify-center gap-1 mt-3">
-              <div className="w-8 h-0.5 bg-islamic-primary/30 rounded-full" />
-              <div className="w-2 h-0.5 bg-islamic-primary/10 rounded-full" />
-              <div className="w-2 h-0.5 bg-islamic-primary/10 rounded-full" />
             </div>
           </div>
 
@@ -163,7 +157,7 @@ export function Hero() {
             </Button>
             
             <button
-              className="w-full flex items-center justify-center gap-2 px-8 h-14 text-[17px] text-islamic-primary bg-white/90 backdrop-blur-sm rounded-2xl hover:bg-white transition-all group font-medium shadow-md border border-islamic-primary/10 active:scale-[0.98]"
+              className="w-full flex items-center justify-center gap-2 px-8 h-14 text-[17px] text-islamic-primary bg-transparent hover:bg-islamic-primary/5 transition-all group font-medium active:scale-[0.98]"
               onClick={() => {
                 const element = document.getElementById('how-bayaan-works')
                 if (element) {

@@ -105,6 +105,37 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
   useEffect(() => {
     if (!isDevMode) return;
 
+    // Special handling for the first part of split translation (id: 2)
+    // Make it appear 2 seconds after the first card (which appears at 2 seconds)
+    if (videoTimeRef.current >= 4.0 && !processedSegments.has(21)) { // 21 is a special marker for first part of split
+      // Check if we haven't processed the main segment 2 yet
+      if (!processedSegments.has(2)) {
+        // Add the first part of the split translation early
+        setProcessedSegments(prev => {
+          const newSet = new Set(prev);
+          newSet.add(21); // Mark first part as processed
+          return newSet;
+        });
+        
+        const firstPart = {
+          lang: "en",
+          text: "He ﷻ created the heavens and the earth with truth."
+        };
+        
+        setTranslations(prev => {
+          const exists = prev.some(t => t.text === firstPart.text);
+          if (!exists) {
+            const updated = [...prev, firstPart];
+            return updated.slice(-15);
+          }
+          return prev;
+        });
+        
+        // Return early to prevent processing the full segment
+        return;
+      }
+    }
+
     // Don't process translations until 2 seconds have passed (processing delay)
     if (videoTimeRef.current < 2.0) {
       return;
@@ -132,20 +163,60 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
           return newSet;
         });
         
-        const newTranslation = {
-          lang: "en",
-          text: segment.translation.en
-        };
-        
-        setTranslations(prev => {
-          // Check if this translation already exists to prevent duplicates
-          const exists = prev.some(t => t.text === newTranslation.text);
-          if (!exists) {
-            const updated = [...prev, newTranslation];
-            return updated.slice(-15);
+        // Check if this is the long second translation and handle only the second part
+        if (segment.id === 2) {
+          // We've already added the first part at 3 seconds, now add the second part
+          const fullText = segment.translation.en;
+          const splitPoint = fullText.indexOf(', and He');
+          
+          if (splitPoint > 0) {
+            // Second part: "And He ﷻ sent down the Book and the balance..."
+            const secondPart = {
+              lang: "en",
+              text: "And" + fullText.substring(splitPoint + 5)
+            };
+            
+            // Add second part (first part was already added at 3 seconds)
+            setTranslations(prev => {
+              const exists = prev.some(t => t.text === secondPart.text);
+              if (!exists) {
+                const updated = [...prev, secondPart];
+                return updated.slice(-15);
+              }
+              return prev;
+            });
+          } else {
+            // Fallback: use original if split fails
+            const newTranslation = {
+              lang: "en",
+              text: segment.translation.en
+            };
+            
+            setTranslations(prev => {
+              const exists = prev.some(t => t.text === newTranslation.text);
+              if (!exists) {
+                const updated = [...prev, newTranslation];
+                return updated.slice(-15);
+              }
+              return prev;
+            });
           }
-          return prev;
-        });
+        } else {
+          // For all other translations, add normally
+          const newTranslation = {
+            lang: "en",
+            text: segment.translation.en
+          };
+          
+          setTranslations(prev => {
+            const exists = prev.some(t => t.text === newTranslation.text);
+            if (!exists) {
+              const updated = [...prev, newTranslation];
+              return updated.slice(-15);
+            }
+            return prev;
+          });
+        }
       }
     }
   }, [currentTime, isDevMode]);
@@ -158,7 +229,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
       // Reset everything immediately when video loops
       setArabicWords([]);
       setTranslations([]);
-      setProcessedSegments(new Set());
+      setProcessedSegments(new Set()); // This will clear both regular segments and special marker 21
       setCurrentSegment(null);
       
       // Clear the word interval if it exists

@@ -255,13 +255,14 @@ export const nl: TranslationStructure = {
           yearly: '€470', // Keep price as is
         },
         features: [
-          'tot 100 aanwezigen', // 'up to 100 attendees'
           '1 vertaalkamer', // '1 translation room'
           'vrijdag khutbah ondersteuning', // 'friday khutbah support'
           'basisanalyses', // 'basic analytics'
           'e-mailondersteuning', // 'email support'
           'mobiele toegang', // 'mobile access'
         ],
+        includedHours: '8', // '8 hours'
+        additionalInfo: '€7 per uur', // '€7 per hour'
         cta: 'start nu', // 'get started'
       },
       professional: {
@@ -273,15 +274,15 @@ export const nl: TranslationStructure = {
           yearly: '€950', // Keep price as is
         },
         features: [
-          'tot 500 aanwezigen', // 'up to 500 attendees'
           '5 vertaalkamers', // '5 translation rooms'
-          'alle soorten evenementen', // 'all event types'
           'geavanceerde analyses', // 'advanced analytics'
           'prioriteitsondersteuning', // 'priority support'
           'openbare weergaveschermen', // 'public display screens'
           'sessieopname', // 'session recording'
           'exporteren & archiveren', // 'export & archive'
         ],
+        includedHours: '20', // '20 hours'
+        additionalInfo: '€5 per uur', // '€5 per hour'
         cta: 'start nu', // 'get started'
       },
       enterprise: {
@@ -289,7 +290,6 @@ export const nl: TranslationStructure = {
         description: 'voor grote moskeeën en islamitische centra met uitgebreide behoeften', // 'for large mosques and islamic centers with comprehensive needs'
         price: 'aangepast', // 'custom'
         features: [
-          'onbeperkt aantal aanwezigen', // 'unlimited attendees'
           'onbeperkt aantal kamers', // 'unlimited rooms'
           'aangepaste integraties', // 'custom integrations'
           'toegewijde ondersteuning', // 'dedicated support'
@@ -298,6 +298,8 @@ export const nl: TranslationStructure = {
           'api-toegang', // 'api access'
           'white labeling', // 'white labeling'
         ],
+        includedHours: 'onbeperkt', // 'unlimited'
+        additionalInfo: 'aangepaste prijzen', // 'custom pricing'
         cta: 'neem contact op met sales', // 'contact sales'
       },
     },
@@ -328,15 +330,14 @@ export const nl: TranslationStructure = {
   cta: {
     title: 'klaar om je dawah-bereik uit te breiden?', // 'ready to expand your dawah reach?'
     subtitle: 'sluit je aan bij moskeeën wereldwijd om islamitische kennis voor iedereen toegankelijk te maken', // 'join mosques worldwide in making islamic knowledge accessible to everyone'
-    primaryButton: 'start je gratis proefperiode', // 'start your free trial'
+    primaryButton: 'begin vandaag', // 'get started today'
     secondaryButton: 'boek een demo', // 'book a demo'
     features: {
       feature1: 'geen creditcard vereist', // 'no credit card required'
-      feature2: '14 dagen gratis proefperiode', // '14-day free trial'
+      feature2: 'directe activatie', // 'instant activation'
       feature3: 'installatie in 5 minuten', // 'setup in 5 minutes'
     },
     demoAlert: 'demo planning binnenkort beschikbaar! neem contact met ons op via demo@bayaan.io', // 'demo scheduling coming soon! contact us at demo@bayaan.io'
-    ramadanOffer: '🌙 Speciale Ramadan aanbieding: 50% korting voor de eerste 3 maanden', // '🌙 Special Ramadan offer: 50% off for the first 3 months'
     blessing: 'Moge Allah u zegenen', // 'May Allah bless you'
   },
 

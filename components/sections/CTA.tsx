@@ -85,18 +85,6 @@ export function CTA() {
             </Button>
           </div>
 
-          {/* Urgency message */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="mt-12"
-          >
-            <p className="text-gold-200 text-lg">
-              {t.cta.ramadanOffer}
-            </p>
-          </motion.div>
 
           {/* Arabic blessing */}
           <motion.div

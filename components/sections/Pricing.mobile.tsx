@@ -10,26 +10,30 @@ import { useTranslation } from "@/hooks/useTranslation"
 
 export function Pricing() {
   const { t } = useTranslation()
-  const [billingPeriod, setBillingPeriod] = useState<'monthly' | 'yearly'>('monthly')
   
   const plans = [
     {
       name: t.pricing.plans.starter.name,
-      price: billingPeriod === 'monthly' ? t.pricing.plans.starter.price.monthly : t.pricing.plans.starter.price.yearly,
-      period: billingPeriod === 'monthly' ? t.pricing.perMonth : t.pricing.perYear,
+      price: t.pricing.plans.starter.price.monthly,
+      period: t.pricing.perMonth,
       description: t.pricing.plans.starter.description,
       features: t.pricing.plans.starter.features,
       cta: t.pricing.plans.starter.cta,
       highlighted: false,
+      includedHours: t.pricing.plans.starter.includedHours,
+      additionalInfo: t.pricing.plans.starter.additionalInfo,
     },
     {
       name: t.pricing.plans.professional.name,
-      price: billingPeriod === 'monthly' ? t.pricing.plans.professional.price.monthly : t.pricing.plans.professional.price.yearly,
-      period: billingPeriod === 'monthly' ? t.pricing.perMonth : t.pricing.perYear,
+      price: t.pricing.plans.professional.price.monthly,
+      period: t.pricing.perMonth,
       description: t.pricing.plans.professional.description,
       features: t.pricing.plans.professional.features,
       cta: t.pricing.plans.professional.cta,
       highlighted: true,
+      badge: t.pricing.plans.professional.popularBadge,
+      includedHours: t.pricing.plans.professional.includedHours,
+      additionalInfo: t.pricing.plans.professional.additionalInfo,
     },
     {
       name: t.pricing.plans.enterprise.name,
@@ -39,6 +43,8 @@ export function Pricing() {
       features: t.pricing.plans.enterprise.features,
       cta: t.pricing.plans.enterprise.cta,
       highlighted: false,
+      includedHours: t.pricing.plans.enterprise.includedHours,
+      additionalInfo: t.pricing.plans.enterprise.additionalInfo,
     },
   ]
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, startIndex: 1 })
@@ -78,34 +84,9 @@ export function Pricing() {
           >
             {t.pricing.title}
           </h2>
-          <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto px-4 mb-6">
+          <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             {t.pricing.subtitle}
           </p>
-          
-          {/* Billing Toggle */}
-          <div className="flex items-center justify-center gap-3">
-            <span className={`text-sm font-medium ${billingPeriod === 'monthly' ? 'text-islamic-primary' : 'text-gray-500'}`}>
-              {t.pricing.monthlyBilling}
-            </span>
-            <button
-              onClick={() => setBillingPeriod(billingPeriod === 'monthly' ? 'yearly' : 'monthly')}
-              className="relative inline-flex h-7 w-14 items-center rounded-full bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-islamic-primary focus:ring-offset-2"
-            >
-              <span
-                className={`inline-block h-5 w-5 transform rounded-full bg-islamic-primary transition-transform ${
-                  billingPeriod === 'yearly' ? 'translate-x-8' : 'translate-x-1'
-                }`}
-              />
-            </button>
-            <span className={`text-sm font-medium ${billingPeriod === 'yearly' ? 'text-islamic-primary' : 'text-gray-500'}`}>
-              {t.pricing.yearlyBilling}
-            </span>
-            {billingPeriod === 'yearly' && (
-              <span className="bg-gold-400 text-white text-xs px-2 py-1 rounded-full font-semibold">
-                {t.pricing.savePercentage}
-              </span>
-            )}
-          </div>
         </motion.div>
 
         {/* Mobile carousel */}
@@ -114,7 +95,18 @@ export function Pricing() {
             <div className="flex">
               {plans.map((plan, index) => (
                 <div key={index} className="flex-[0_0_85%] min-w-0 px-2">
-                  <PricingCard plan={plan} />
+                  <div className="relative">
+                    {plan.badge && (
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-10">
+                        <span className="bg-gold-500 text-white px-3 py-1 rounded-full text-[10px] font-semibold shadow-lg">
+                          {plan.badge}
+                        </span>
+                      </div>
+                    )}
+                    <div className={plan.badge ? "mt-6" : ""}>
+                      <PricingCard plan={plan} />
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -144,9 +136,18 @@ export function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={plan.highlighted ? "relative -mt-4 mb-4" : ""}
+              className="relative"
             >
-              <PricingCard plan={plan} />
+              {plan.badge && (
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                  <span className="bg-gold-500 text-white px-4 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                    {plan.badge}
+                  </span>
+                </div>
+              )}
+              <div className={plan.highlighted ? "mt-8" : ""}>
+                <PricingCard plan={plan} />
+              </div>
             </motion.div>
           ))}
         </div>
@@ -219,7 +220,7 @@ export function Pricing() {
 
 function PricingCard({ plan }: { plan: any }) {
   return (
-    <Card className={`p-6 md:p-8 h-full border-0 shadow-lg relative overflow-hidden ${
+    <Card className={`p-6 md:p-8 h-full border-0 shadow-lg relative ${
       plan.highlighted 
         ? "shadow-2xl border-2 border-islamic-primary bg-gradient-to-br from-white to-emerald-50" 
         : "bg-islamic-light"

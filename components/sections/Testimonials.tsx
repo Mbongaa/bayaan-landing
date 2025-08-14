@@ -140,33 +140,6 @@ export function Testimonials() {
           ))}
         </div>
 
-        {/* Trust badges - mobile optimized */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-12 md:mt-16 text-center"
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-islamic-primary">50+</div>
-              <div className="text-xs md:text-sm text-gray-600">active mosques</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-islamic-primary">10K+</div>
-              <div className="text-xs md:text-sm text-gray-600">weekly users</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-islamic-primary">99.9%</div>
-              <div className="text-xs md:text-sm text-gray-600">uptime</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-islamic-primary">5 ⭐</div>
-              <div className="text-xs md:text-sm text-gray-600">avg rating</div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   )

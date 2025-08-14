@@ -255,13 +255,14 @@ export const ar: TranslationStructure = {
           yearly: '€470', // Keep price as is
         },
         features: [
-          'حتى ١٠٠ حاضر', // 'up to 100 attendees'
           'غرفة ترجمة واحدة', // '1 translation room'
           'دعم خطبة الجمعة', // 'friday khutbah support'
           'تحليلات أساسية', // 'basic analytics'
           'دعم عبر البريد الإلكتروني', // 'email support'
           'وصول عبر الهاتف المحمول', // 'mobile access'
         ],
+        includedHours: '٨', // '8'
+        additionalInfo: '€٧ لكل ساعة', // '€7 per hour'
         cta: 'ابدأ', // 'get started'
       },
       professional: {
@@ -273,15 +274,15 @@ export const ar: TranslationStructure = {
           yearly: '€950', // Keep price as is
         },
         features: [
-          'حتى ٥٠٠ حاضر', // 'up to 500 attendees'
           '٥ غرف ترجمة', // '5 translation rooms'
-          'جميع أنواع الفعاليات', // 'all event types'
           'تحليلات متقدمة', // 'advanced analytics'
           'دعم ذو أولوية', // 'priority support'
           'شاشات عرض عامة', // 'public display screens'
           'تسجيل الجلسات', // 'session recording'
           'تصدير وأرشفة', // 'export & archive'
         ],
+        includedHours: '٢٠', // '20'
+        additionalInfo: '€٥ لكل ساعة', // '€5 per hour'
         cta: 'ابدأ', // 'get started'
       },
       enterprise: {
@@ -289,7 +290,6 @@ export const ar: TranslationStructure = {
         description: 'للمساجد الكبيرة والمراكز الإسلامية ذات الاحتياجات الشاملة', // 'for large mosques and islamic centers with comprehensive needs'
         price: 'مخصص', // 'custom'
         features: [
-          'حضور غير محدود', // 'unlimited attendees'
           'غرف غير محدودة', // 'unlimited rooms'
           'تكاملات مخصصة', // 'custom integrations'
           'دعم مخصص', // 'dedicated support'
@@ -298,6 +298,8 @@ export const ar: TranslationStructure = {
           'وصول API', // 'api access'
           'علامة تجارية بيضاء', // 'white labeling'
         ],
+        includedHours: 'غير محدود', // 'unlimited'
+        additionalInfo: 'تسعير مخصص', // 'custom pricing'
         cta: 'اتصل بالمبيعات', // 'contact sales'
       },
     },
@@ -328,15 +330,14 @@ export const ar: TranslationStructure = {
   cta: {
     title: 'هل أنت مستعد لتوسيع نطاق دعوتك؟', // 'ready to expand your dawah reach?'
     subtitle: 'انضم إلى المساجد في جميع أنحاء العالم في جعل المعرفة الإسلامية في متناول الجميع', // 'join mosques worldwide in making islamic knowledge accessible to everyone'
-    primaryButton: 'ابدأ تجربتك المجانية', // 'start your free trial'
+    primaryButton: 'ابدأ اليوم', // 'get started today'
     secondaryButton: 'احجز عرضًا توضيحيًا', // 'book a demo'
     features: {
       feature1: 'لا حاجة لبطاقة ائتمان', // 'no credit card required'
-      feature2: 'تجربة مجانية لمدة ١٤ يومًا', // '14-day free trial'
+      feature2: 'تفعيل فوري', // 'instant activation'
       feature3: 'إعداد في ٥ دقائق', // 'setup in 5 minutes'
     },
     demoAlert: 'جدولة العرض التوضيحي قريبًا! اتصل بنا على demo@bayaan.io', // 'demo scheduling coming soon! contact us at demo@bayaan.io'
-    ramadanOffer: '🌙 عرض رمضان الخاص: خصم ٥٠٪ لأول ٣ أشهر', // '🌙 Special Ramadan offer: 50% off for the first 3 months'
     blessing: 'بارك الله فيكم', // 'May Allah bless you'
   },
 

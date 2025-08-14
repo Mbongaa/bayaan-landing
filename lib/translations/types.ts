@@ -249,6 +249,8 @@ export interface TranslationStructure {
           yearly: string;
         };
         features: string[];
+        includedHours?: string;
+        additionalInfo?: string;
         cta: string;
       };
       professional: {
@@ -260,6 +262,8 @@ export interface TranslationStructure {
           yearly: string;
         };
         features: string[];
+        includedHours?: string;
+        additionalInfo?: string;
         cta: string;
       };
       enterprise: {
@@ -267,6 +271,8 @@ export interface TranslationStructure {
         description: string;
         price: string;
         features: string[];
+        includedHours?: string;
+        additionalInfo?: string;
         cta: string;
       };
     };
@@ -305,7 +311,6 @@ export interface TranslationStructure {
       feature3: string;
     },
     demoAlert: string;
-    ramadanOffer: string;
     blessing: string;
   };
 

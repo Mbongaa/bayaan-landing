@@ -72,7 +72,7 @@ export function MobileNavigation() {
   return (
     <>
       {/* Fixed Logo Bar */}
-      <div className={`lg:hidden fixed top-0 left-0 right-0 h-14 z-[100] transition-all duration-300 ${
+      <div className={`lg:hidden fixed top-0 left-0 right-0 h-16 z-[100] transition-all duration-300 ${
         isScrolled || isMobileMenuOpen 
           ? "bg-islamic-light/95 backdrop-blur-md shadow-lg" 
           : "bg-white/10 backdrop-blur-sm"
@@ -89,21 +89,65 @@ export function MobileNavigation() {
               className="cursor-pointer flex-shrink-0"
             >
               <span 
-                className="text-xl font-bold font-poppins text-islamic-dark"
+                className="text-2xl font-bold font-poppins text-islamic-dark"
                 style={{ letterSpacing: '-0.058em' }} // Subtle tightening to match Canva's -58
               >
                 bayaan.ai
               </span>
             </a>
             
-            {/* Title next to logo - no animations */}
+            {/* Title next to logo - with animations */}
             {!isScrolled && (
-              <span 
-                className="text-base font-bold font-poppins text-islamic-dark whitespace-nowrap"
-                style={{ letterSpacing: '-0.058em' }} // Same tight spacing as logo
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ 
+                  duration: 0.5, 
+                  ease: [0.23, 1, 0.32, 1],
+                  delay: 0.3
+                }}
+                className="relative"
               >
-                real time sermon translation
-              </span>
+                <motion.span 
+                  className="text-lg font-bold font-poppins text-islamic-dark whitespace-nowrap"
+                  style={{ letterSpacing: '-0.058em' }}
+                  animate={{
+                    scale: [1, 1.08, 1],
+                    opacity: [0.8, 1, 0.8]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "loop"
+                  }}
+                >
+                  real time sermon translation
+                </motion.span>
+                <motion.span
+                  className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-islamic-primary to-gold-400"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ 
+                    duration: 0.8,
+                    ease: "easeInOut",
+                    delay: 0.6
+                  }}
+                />
+                <motion.span
+                  className="absolute -right-2 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-gold-400 rounded-full"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ 
+                    opacity: 1,
+                    scale: 1
+                  }}
+                  transition={{ 
+                    duration: 0.3,
+                    ease: "easeOut",
+                    delay: 0.8
+                  }}
+                />
+              </motion.div>
             )}
           </div>
         </div>
@@ -117,7 +161,7 @@ export function MobileNavigation() {
             className="lg:hidden fixed z-[101]"
             style={{
               position: 'fixed',
-              top: '8px',
+              top: '12px',
               right: '64px', // Position to the left of hamburger menu
             }}
           >
@@ -133,7 +177,7 @@ export function MobileNavigation() {
             style={{
               // Use fixed pixel positioning to prevent any movement
               position: 'fixed',
-              top: '8px', // Adjusted to center: (56px - 40px) / 2 = 8px
+              top: '12px', // Adjusted to center: (64px - 40px) / 2 = 12px
               right: '16px',
               width: '40px',
               height: '40px',
@@ -157,7 +201,7 @@ export function MobileNavigation() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
-          className="lg:hidden fixed top-14 left-0 right-0 bg-islamic-light shadow-xl z-[99]"
+          className="lg:hidden fixed top-16 left-0 right-0 bg-islamic-light shadow-xl z-[99]"
         >
           <div className="px-4 py-4">
             {navItems.map((item, index) => (

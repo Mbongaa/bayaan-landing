@@ -24,17 +24,6 @@ export function Anecdote() {
         >
           {/* Mobile-optimized Title */}
           <div className="text-center mb-6">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-islamic-primary/10 text-islamic-primary rounded-full mb-3 text-xs font-semibold"
-            >
-              <Heart className="w-3 h-3" />
-              <span>Personal Story</span>
-            </motion.div>
-            
             <h2 
               className="text-2xl font-bold font-poppins text-islamic-dark leading-tight"
               style={{ letterSpacing: '-0.058em' }}
@@ -153,28 +142,12 @@ export function Anecdote() {
             </motion.div>
           </div>
 
-          {/* Attribution with enhanced styling */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.7 }}
-            className="mt-8 text-center"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-islamic-primary/10">
-              <div className="w-1 h-4 bg-islamic-primary rounded-full" />
-              <p className="text-sm text-gray-600 italic font-medium">
-                {t.anecdote.attribution}
-              </p>
-            </div>
-          </motion.div>
-
           {/* Call to Action */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.7 }}
             className="mt-8 text-center"
           >
             <button
