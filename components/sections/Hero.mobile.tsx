@@ -81,60 +81,76 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-5xl mx-auto relative z-20"
         >
-          {/* Badge - smaller on mobile */}
+          {/* Badge - mobile optimized with better touch target */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 md:gap-2 md:px-4 md:py-2 bg-islamic-primary/10 text-islamic-primary rounded-full mb-6 md:mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-islamic-primary/10 to-gold-400/10 text-islamic-primary rounded-full mb-6 backdrop-blur-sm border border-islamic-primary/20"
           >
-            <Sparkles className="w-3 h-3 md:w-4 md:h-4" />
-            <span className="text-xs md:text-sm font-medium">{t.hero.badge}</span>
+            <Sparkles className="w-4 h-4" />
+            <span className="text-sm font-semibold">{t.hero.badge}</span>
           </motion.div>
 
-          {/* Main headline - optimized for mobile */}
+          {/* Main headline - mobile first responsive design */}
           <h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold font-poppins mb-2 md:mb-3 text-islamic-dark leading-tight"
+            className="text-[2.5rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-7xl font-bold font-poppins mb-4 text-islamic-dark"
             style={{ letterSpacing: '-0.058em' }}
           >
             {t.hero.mainTitle}
-            <span className="block mt-1 md:mt-2 text-gradient from-islamic-primary to-emerald-600 leading-normal pb-1">
+            <span className="block mt-2 text-gradient from-islamic-primary to-emerald-600 leading-[1.15]">
               {t.hero.mainTitleGradient}
             </span>
           </h1>
 
-          {/* Subheadline - better mobile readability */}
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-4 max-w-3xl mx-auto px-2 leading-relaxed">
-            {t.hero.subheading} 
-            <span className="block mt-1 md:inline md:mt-0">{t.hero.subheadingHighlight}</span>
+          {/* Subheadline - improved mobile typography and spacing */}
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-3 max-w-2xl mx-auto px-2 leading-[1.4] font-light">
+            {t.hero.subheading}
+          </p>
+          <p className="text-base sm:text-lg md:text-xl text-gray-500 mb-8 max-w-xl mx-auto px-2 font-medium">
+            {t.hero.subheadingHighlight}
           </p>
 
-          {/* Key benefits - mobile optimized */}
-          <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 md:gap-4 mb-8 md:mb-10 text-xs md:text-sm">
-            <div className="flex items-center justify-center gap-2 text-gray-600">
-              <Globe className="w-3.5 h-3.5 md:w-4 md:h-4 text-islamic-primary flex-shrink-0" />
-              <span>{t.hero.benefits.multiLanguage}</span>
+          {/* Key benefits - horizontal scroll on mobile for better UX */}
+          <div className="mb-10">
+            <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 snap-x snap-mandatory no-scrollbar">
+              <div className="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl whitespace-nowrap flex-shrink-0 snap-center shadow-md border border-white/50">
+                <div className="w-8 h-8 rounded-lg bg-islamic-primary/10 flex items-center justify-center">
+                  <Globe className="w-4 h-4 text-islamic-primary" />
+                </div>
+                <span className="text-sm font-medium text-gray-700">{t.hero.benefits.multiLanguage}</span>
+              </div>
+              <div className="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl whitespace-nowrap flex-shrink-0 snap-center shadow-md border border-white/50">
+                <div className="w-8 h-8 rounded-lg bg-islamic-primary/10 flex items-center justify-center">
+                  <Mic className="w-4 h-4 text-islamic-primary" />
+                </div>
+                <span className="text-sm font-medium text-gray-700">{t.hero.benefits.realTime}</span>
+              </div>
+              <div className="flex items-center gap-2.5 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-2xl whitespace-nowrap flex-shrink-0 snap-center shadow-md border border-white/50">
+                <div className="w-8 h-8 rounded-lg bg-islamic-primary/10 flex items-center justify-center">
+                  <Users className="w-4 h-4 text-islamic-primary" />
+                </div>
+                <span className="text-sm font-medium text-gray-700">{t.hero.benefits.inclusive}</span>
+              </div>
             </div>
-            <div className="flex items-center justify-center gap-2 text-gray-600">
-              <Mic className="w-3.5 h-3.5 md:w-4 md:h-4 text-islamic-primary flex-shrink-0" />
-              <span>{t.hero.benefits.realTime}</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 text-gray-600">
-              <Users className="w-3.5 h-3.5 md:w-4 md:h-4 text-islamic-primary flex-shrink-0" />
-              <span>{t.hero.benefits.inclusive}</span>
+            {/* Scroll indicator */}
+            <div className="flex justify-center gap-1 mt-3">
+              <div className="w-8 h-0.5 bg-islamic-primary/30 rounded-full" />
+              <div className="w-2 h-0.5 bg-islamic-primary/10 rounded-full" />
+              <div className="w-2 h-0.5 bg-islamic-primary/10 rounded-full" />
             </div>
           </div>
 
-          {/* CTA buttons - mobile stacked */}
+          {/* CTA buttons - redesigned for better mobile touch targets */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4 sm:px-0"
+            className="flex flex-col gap-3 px-4"
           >
             <Button 
               size="lg"
-              className="w-full sm:w-auto bg-islamic-primary hover:bg-islamic-primary/90 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg rounded-full shadow-xl hover:shadow-2xl transition-all"
+              className="w-full bg-gradient-to-r from-islamic-primary to-emerald-600 hover:from-islamic-primary/90 hover:to-emerald-600/90 text-white px-8 h-14 text-[17px] rounded-2xl shadow-xl hover:shadow-2xl transition-all font-semibold active:scale-[0.98]"
               onClick={() => {
                 const element = document.getElementById('pricing')
                 if (element) {
@@ -143,12 +159,12 @@ export function Hero() {
               }}
             >
               {t.hero.ctaPricing}
-              <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            
             <button
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 md:px-8 h-[52px] md:h-[60px] text-base md:text-lg text-islamic-primary hover:text-islamic-primary/80 transition-all group"
+              className="w-full flex items-center justify-center gap-2 px-8 h-14 text-[17px] text-islamic-primary bg-white/90 backdrop-blur-sm rounded-2xl hover:bg-white transition-all group font-medium shadow-md border border-islamic-primary/10 active:scale-[0.98]"
               onClick={() => {
-                // Scroll to How Bayaan Works section within the same page
                 const element = document.getElementById('how-bayaan-works')
                 if (element) {
                   element.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -159,165 +175,141 @@ export function Hero() {
               <motion.div
                 className="flex items-center"
                 animate={{
-                  y: [0, 5, 0],
+                  y: [0, 4, 0],
                 }}
                 transition={{
-                  duration: 1.5,
+                  duration: 1.8,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
               >
-                <ChevronDown className="w-5 h-5 md:w-6 md:h-6" />
+                <ChevronDown className="w-5 h-5 text-islamic-primary" />
               </motion.div>
             </button>
           </motion.div>
         </motion.div>
 
-        {/* How It Works Section - Integrated into Hero */}
+        {/* How It Works Section - REDESIGNED for mobile */}
         <motion.div
           id="how-bayaan-works"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-16 md:mt-24"
+          className="mt-20 md:mt-24"
         >
-          {/* Section header */}
-          <div className="text-center mb-12 md:mb-16">
-            <Badge className="mb-3 md:mb-4 bg-gold-100 text-gold-700 border-gold-200 text-xs md:text-sm">
-              {t.hero.howItWorks.badge}
-            </Badge>
+          {/* Section header - mobile optimized */}
+          <div className="text-center mb-8 px-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.7 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gold-100/50 backdrop-blur-sm text-gold-700 rounded-full mb-4 border border-gold-200/50"
+            >
+              <span className="text-sm font-semibold">{t.hero.howItWorks.badge}</span>
+            </motion.div>
             <h2 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold font-poppins mb-3 md:mb-4 text-islamic-dark"
+              className="text-2xl font-bold font-poppins mb-3 text-islamic-dark"
               style={{ letterSpacing: '-0.058em' }}
             >
               {t.hero.howItWorks.title}
             </h2>
-            <p className="text-base md:text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base text-gray-600 max-w-sm mx-auto">
               {t.hero.howItWorks.subtitle}
             </p>
           </div>
 
-          {/* Vertical Timeline */}
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Vertical line - hidden on mobile, visible on desktop */}
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-islamic-primary via-gold-400 to-emerald-600 opacity-30" />
-              
-              {/* Top endpoint - chevron up */}
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 -top-4">
-                <motion.div 
-                  className="relative flex flex-col items-center gap-0.5"
-                  animate={{
-                    y: [0, -2, 0],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <div className="w-5 h-5 border-t-[3px] border-r-[3px] transform rotate-[-45deg] border-islamic-primary opacity-70" />
-                  <div className="w-5 h-5 border-t-[3px] border-r-[3px] transform rotate-[-45deg] border-islamic-primary/50 opacity-50 -mt-3" />
-                </motion.div>
-              </div>
-              
-              {/* Bottom endpoint - chevron down */}
-              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 -bottom-4">
-                <motion.div 
-                  className="relative flex flex-col items-center gap-0.5"
-                  animate={{
-                    y: [0, 2, 0],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <div className="w-5 h-5 border-b-[3px] border-r-[3px] transform rotate-[45deg] border-gold-400/50 opacity-50" />
-                  <div className="w-5 h-5 border-b-[3px] border-r-[3px] transform rotate-[45deg] border-gold-400 opacity-70 -mt-3" />
-                </motion.div>
-              </div>
-
-              {/* Steps */}
+          {/* Mobile Horizontal Carousel for Steps */}
+          <div className="relative">
+            {/* Steps carousel container */}
+            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-4 px-4">
               {steps.map((step, index) => (
                 <motion.div
                   key={step.number}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                  className={`relative flex flex-col md:flex-row items-center mb-6 md:mb-0 ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
+                  transition={{ duration: 0.4, delay: 0.1 + index * 0.1 }}
+                  className="flex-shrink-0 w-[85vw] max-w-[320px] snap-center"
                 >
-                  {/* Content card */}
-                  <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl border border-white/50"
-                    >
-                      {/* Step number badge */}
-                      <div className={`flex items-center gap-3 mb-4 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
-                        <span className="text-sm font-medium text-gray-500 uppercase tracking-wider">{t.hero.howItWorks.stepLabel}</span>
-                        <span className={`text-3xl md:text-4xl font-bold bg-gradient-to-r ${step.color} bg-clip-text text-transparent`}>
+                  {/* Step Card */}
+                  <div className="relative bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl border border-white/50 overflow-hidden">
+                    {/* Step number header */}
+                    <div className={`bg-gradient-to-r ${step.color} p-4`}>
+                      <div className="flex items-center justify-between">
+                        <span className="text-white/80 text-xs font-semibold uppercase tracking-wider">
+                          {t.hero.howItWorks.stepLabel}
+                        </span>
+                        <span className="text-3xl font-bold text-white">
                           {step.number}
                         </span>
                       </div>
+                    </div>
+
+                    {/* Icon and content */}
+                    <div className="p-6">
+                      {/* Icon circle */}
+                      <div className="mb-4">
+                        <motion.div
+                          whileInView={{ scale: [1, 1.05, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} p-0.5 mx-auto shadow-lg`}
+                        >
+                          <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center">
+                            <step.icon className="w-8 h-8 text-islamic-primary" />
+                          </div>
+                        </motion.div>
+                      </div>
 
                       {/* Title */}
-                      <h3 className={`text-xl md:text-2xl font-bold text-islamic-dark mb-3 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                      <h3 className="text-xl font-bold text-islamic-dark mb-3 text-center">
                         {step.title}
                       </h3>
 
                       {/* Description */}
-                      <p className={`text-sm md:text-base text-gray-600 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                      <p className="text-sm text-gray-600 text-center leading-relaxed">
                         {step.description}
                       </p>
-                    </motion.div>
-                  </div>
+                    </div>
 
-                  {/* Center icon circle */}
-                  <div className="relative flex items-center justify-center w-full md:w-2/12 my-8 md:my-0">
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className={`relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br ${step.color} p-1 shadow-2xl`}
-                    >
-                      <div className="w-full h-full rounded-full bg-islamic-light flex items-center justify-center">
-                        <step.icon className="w-8 h-8 md:w-10 md:h-10 text-islamic-primary" />
+                    {/* Progress indicator at bottom */}
+                    <div className="px-6 pb-4">
+                      <div className="flex gap-1 justify-center">
+                        {steps.map((_, i) => (
+                          <div
+                            key={i}
+                            className={`h-1 rounded-full transition-all duration-300 ${
+                              i === index 
+                                ? 'w-8 bg-islamic-primary' 
+                                : i < index 
+                                  ? 'w-2 bg-islamic-primary/50'
+                                  : 'w-2 bg-gray-300'
+                            }`}
+                          />
+                        ))}
                       </div>
-                      
-                      {/* Pulse animation */}
-                      <motion.div
-                        className={`absolute inset-0 rounded-full bg-gradient-to-br ${step.color} opacity-30`}
-                        animate={{
-                          scale: [1, 1.3, 1],
-                          opacity: [0.3, 0, 0.3],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: index * 0.5,
-                        }}
-                      />
-                    </motion.div>
-
-                    {/* Connecting dots for mobile */}
-                    {index < steps.length - 1 && (
-                      <div className="md:hidden absolute top-full left-1/2 transform -translate-x-1/2 flex flex-col items-center py-4">
-                        <div className="w-0.5 h-8 bg-gradient-to-b from-islamic-primary to-gold-400 opacity-30" />
-                        <div className="w-1 h-1 rounded-full bg-gold-400 mt-1" />
-                        <div className="w-1 h-1 rounded-full bg-gold-400 mt-1" />
-                        <div className="w-1 h-1 rounded-full bg-gold-400 mt-1" />
-                      </div>
-                    )}
+                    </div>
                   </div>
-
-                  {/* Empty space for alternating layout */}
-                  <div className="hidden md:block w-5/12" />
                 </motion.div>
               ))}
             </div>
+
+            {/* Swipe hint */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-500"
+            >
+              <motion.div
+                animate={{ x: [-5, 5, -5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="flex items-center gap-1"
+              >
+                <ChevronDown className="w-4 h-4 rotate-90" />
+                <span>Swipe to explore</span>
+                <ChevronDown className="w-4 h-4 -rotate-90" />
+              </motion.div>
+            </motion.div>
           </div>
         </motion.div>
 
