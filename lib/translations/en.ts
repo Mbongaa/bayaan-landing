@@ -230,7 +230,6 @@ export const en: TranslationStructure = {
       paragraph3: 'And this isn’t just for non-Arabic speakers. Many Arabic speakers, especially younger generations or those who only speak a dialect, struggle with fusha too. This tool bridges that gap, helping both Arabic and non-Arabic speakers draw closer to the language of the Qur’an.',
       paragraph4: 'I’ve seen how my cousins back home became fluent in English simply by watching English movies with Arabic subtitles. With Bayaan, InshaAllah, we can reverse that — letting people absorb fusha Arabic while following the khutbah with clear, live subtitles.',
     },
-    cta: 'join our mission',
     attribution: '— Founder\'s personal story',
   },
 
