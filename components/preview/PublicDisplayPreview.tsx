@@ -87,10 +87,10 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
       }
     };
 
-    // Add 2 second delay to simulate real-world processing delay
+    // Add 3.5 second delay to match the new animation timing and simulate processing
     const delayTimeout = setTimeout(() => {
       wordIntervalRef.current = setInterval(addWord, 600); // Add a word every 600ms
-    }, 2000); // 2 second delay before starting transcription
+    }, 3500); // 3.5 second delay to let animations settle before starting transcription
     
     return () => {
       clearTimeout(delayTimeout);
@@ -167,7 +167,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
         wordIntervalRef.current = null;
       }
       
-      // Restart the Arabic words with 2 second delay
+      // Restart the Arabic words with 3.5 second delay
       setTimeout(() => {
         let wordIndex = 0;
         const addWord = () => {
@@ -177,7 +177,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
           }
         };
         wordIntervalRef.current = setInterval(addWord, 600);
-      }, 2000);
+      }, 3500);
     }
     
     videoTimeRef.current = time;
@@ -197,9 +197,15 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
   }
 
   return (
-    <div 
+    <motion.div 
       className={`relative w-full h-full ${className}`}
       style={{ backgroundColor: colors.background }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ 
+        duration: 0.5,
+        ease: "easeOut"
+      }}
     >
       {/* Sound Button Animation Overlay - Desktop only to prevent mobile viewport expansion */}
       <AnimatePresence>
@@ -338,12 +344,12 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
         {/* Top Section - Arabic Transcription (reduced height and subtler) */}
         <motion.div 
           className="h-[13vh] min-h-[70px] mb-4 opacity-70"
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 0.7, y: 0 }}
           transition={{ 
-            duration: 0.6, 
-            ease: [0.23, 1, 0.32, 1],
-            delay: 0.6 // After title (0.3s) + buffer
+            duration: 0.8, 
+            ease: [0.43, 0.13, 0.23, 0.96], // More natural easing
+            delay: 1.2 // Give header time to settle (increased from 0.6)
           }}
         >
           <TranscriptionTicker 
@@ -364,12 +370,12 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
               width: !isMobile ? '40%' : '100%',
               minHeight: '200px'
             }}
-            initial={{ opacity: 0, scale: 0.9, x: -50 }}
+            initial={{ opacity: 0, scale: 0.95, x: -30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ 
-              duration: 0.7, 
-              ease: [0.23, 1, 0.32, 1],
-              delay: 0.8 // After transcription box
+              duration: 1.0, 
+              ease: [0.43, 0.13, 0.23, 0.96], // Smoother, more natural easing
+              delay: 1.6 // After transcription starts appearing (increased from 0.8)
             }}
           >
             <CameraPreview 
@@ -386,12 +392,12 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
             style={{
               width: !isMobile ? '60%' : '100%'
             }}
-            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            initial={{ opacity: 0, scale: 0.95, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ 
-              duration: 0.7, 
-              ease: [0.23, 1, 0.32, 1],
-              delay: 1.0 // After camera box
+              duration: 1.0, 
+              ease: [0.43, 0.13, 0.23, 0.96], // Consistent easing
+              delay: 1.9 // Staggered after camera (increased from 1.0)
             }}
           >
             <TranslationCards 
@@ -417,6 +423,6 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

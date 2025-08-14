@@ -3,16 +3,19 @@
 import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { LanguageSelector } from "@/components/shared/LanguageSelector"
+import { useTranslation } from "@/hooks/useTranslation"
 
 const navItems = [
-  { label: "Preview", href: "#preview" },
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Use Cases", href: "#use-cases" },
-  { label: "Pricing", href: "#pricing" },
+  { key: "preview", href: "#preview" },
+  { key: "features", href: "#features" },
+  { key: "howItWorks", href: "#how-it-works" },
+  { key: "useCases", href: "#use-cases" },
+  { key: "pricing", href: "#pricing" },
 ]
 
 export function DesktopNavigation() {
+  const { t } = useTranslation()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isAtTop, setIsAtTop] = useState(true)
   const [activeSection, setActiveSection] = useState("#preview")
@@ -88,7 +91,10 @@ export function DesktopNavigation() {
             animate={{ opacity: 1, x: 0 }}
             className="cursor-pointer"
           >
-            <span className="text-3xl font-bold font-poppins text-islamic-dark">
+            <span 
+              className="text-3xl font-bold font-poppins text-islamic-dark"
+              style={{ letterSpacing: '-0.058em' }} // Subtle tightening to match Canva's -58
+            >
               bayaan.ai
             </span>
           </motion.a>
@@ -109,6 +115,7 @@ export function DesktopNavigation() {
               >
                 <motion.span 
                   className="text-3xl md:text-4xl font-bold font-poppins text-islamic-dark"
+                  style={{ letterSpacing: '-0.058em' }} // Same tight spacing as logo
                   animate={{
                     scale: [1, 1.15, 1],
                     opacity: [0.8, 1, 0.8]
@@ -119,7 +126,7 @@ export function DesktopNavigation() {
                     repeatType: "loop"
                   }}
                 >
-                  real time sermon translation
+                  {t.hero.title}
                 </motion.span>
                 <motion.span
                   className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-islamic-primary to-gold-400"
@@ -148,7 +155,7 @@ export function DesktopNavigation() {
             ) : (
               navItems.map((item, index) => (
                 <motion.a
-                  key={item.label}
+                  key={item.key}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   initial={{ 
@@ -178,7 +185,7 @@ export function DesktopNavigation() {
                       : 'text-gray-700 hover:text-islamic-primary'
                   }`}
                 >
-                  {item.label}
+                  {t.navigation[item.key as keyof typeof t.navigation]}
                   <motion.span
                     className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-islamic-primary to-gold-400"
                     initial={{ width: "0%", opacity: 0 }}
@@ -210,25 +217,17 @@ export function DesktopNavigation() {
             )}
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex items-center gap-4">
-            <Button 
-              variant="ghost" 
-              className={`font-poppins ${isAtTop && !isScrolled ? 'text-gray-700 hover:bg-gray-100/20' : 'text-islamic-primary hover:bg-islamic-primary/5'}`}
-              onClick={() => alert('Login functionality coming soon!')}
-            >
-              Login
-            </Button>
+          {/* CTA Button and Language Selector */}
+          <div className="flex items-center gap-2">
+            <LanguageSelector />
             <Button 
               className="font-poppins bg-islamic-primary hover:bg-islamic-primary/90 text-white rounded-full px-6"
               onClick={() => {
-                const element = document.getElementById('pricing')
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                }
+                // Navigate to dashboard or external dashboard URL
+                window.location.href = '/dashboard' // Update this URL to your actual dashboard
               }}
             >
-              Get Started
+              {t.navigation.dashboard}
             </Button>
           </div>
         </div>

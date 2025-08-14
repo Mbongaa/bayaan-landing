@@ -217,7 +217,7 @@ export function Pricing() {
   )
 }
 
-function PricingCard({ plan }: { plan: typeof plans[0] }) {
+function PricingCard({ plan }: { plan: any }) {
   return (
     <Card className={`p-6 md:p-8 h-full border-0 shadow-lg relative overflow-hidden ${
       plan.highlighted 

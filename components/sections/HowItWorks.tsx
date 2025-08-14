@@ -2,32 +2,35 @@
 
 import { motion } from "framer-motion"
 import { UserPlus, Share2, Radio } from "lucide-react"
-
-const steps = [
-  {
-    number: "01",
-    icon: UserPlus,
-    title: "Setup Your Mosque",
-    description: "Create your account and configure your mosque's rooms in minutes.",
-    arabicText: "أنشئ حسابك",
-  },
-  {
-    number: "02",
-    icon: Share2,
-    title: "Share Access",
-    description: "Generate QR codes for your congregation. They simply scan to join.",
-    arabicText: "شارك الوصول",
-  },
-  {
-    number: "03",
-    icon: Radio,
-    title: "Go Live",
-    description: "Start translating with one click. Expand your Dawah impact instantly.",
-    arabicText: "ابدأ البث",
-  },
-]
+import { useTranslation } from "@/hooks/useTranslation"
 
 export function HowItWorks() {
+  const { t } = useTranslation()
+
+  const steps = [
+    {
+      number: "01",
+      icon: UserPlus,
+      title: t.hero.steps.step1.title,
+      description: t.hero.steps.step1.description,
+      arabicText: "أنشئ حسابك",
+    },
+    {
+      number: "02",
+      icon: Share2,
+      title: t.hero.steps.step2.title,
+      description: t.hero.steps.step2.description,
+      arabicText: "شارك الوصول",
+    },
+    {
+      number: "03",
+      icon: Radio,
+      title: t.hero.steps.step3.title,
+      description: t.hero.steps.step3.description,
+      arabicText: "ابدأ البث",
+    },
+  ]
+
   return (
     <section id="how-it-works" className="py-16 md:py-24 bg-islamic-light relative overflow-hidden">
       <div className="container mx-auto px-4">
@@ -38,12 +41,14 @@ export function HowItWorks() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-poppins mb-3 md:mb-4 text-islamic-dark">
-            Simple as 1-2-3
+          <h2 
+            className="text-3xl md:text-4xl lg:text-5xl font-bold font-poppins mb-3 md:mb-4 text-islamic-dark"
+            style={{ letterSpacing: '-0.058em' }}
+          >
+            {t.howItWorks.title}
           </h2>
           <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Get your mosque connected and translating in minutes. 
-            No technical expertise needed.
+            {t.howItWorks.subtitle}
           </p>
         </motion.div>
 
@@ -106,7 +111,7 @@ export function HowItWorks() {
           className="text-center mt-12 md:mt-16"
         >
           <p className="text-base md:text-lg text-gray-600 mb-5 md:mb-6 px-4">
-            Join mosques worldwide in making Islamic knowledge accessible to all
+            {t.howItWorks.cta.text}
           </p>
           <button 
             className="px-6 md:px-8 py-3.5 md:py-4 bg-islamic-primary text-white rounded-full font-semibold hover:bg-islamic-primary/90 transition-all shadow-lg hover:shadow-xl text-sm md:text-base"
@@ -117,7 +122,7 @@ export function HowItWorks() {
               }
             }}
           >
-            Get Started Today
+            {t.howItWorks.cta.button}
           </button>
         </motion.div>
       </div>

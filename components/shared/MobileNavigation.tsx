@@ -4,15 +4,18 @@ import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { LanguageSelector } from "@/components/shared/LanguageSelector"
+import { useTranslation } from "@/hooks/useTranslation"
 
 const navItems = [
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-bayaan-works" },
-  { label: "Use Cases", href: "#use-cases" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "features", href: "#features" },
+  { label: "how it works", href: "#how-bayaan-works" },
+  { label: "use cases", href: "#use-cases" },
+  { label: "pricing", href: "#pricing" },
 ]
 
 export function MobileNavigation() {
+  const { t } = useTranslation()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("")
@@ -85,14 +88,20 @@ export function MobileNavigation() {
               }}
               className="cursor-pointer flex-shrink-0"
             >
-              <span className="text-xl font-bold font-poppins text-islamic-dark">
+              <span 
+                className="text-xl font-bold font-poppins text-islamic-dark"
+                style={{ letterSpacing: '-0.058em' }} // Subtle tightening to match Canva's -58
+              >
                 bayaan.ai
               </span>
             </a>
             
             {/* Title next to logo - no animations */}
             {!isScrolled && (
-              <span className="text-base font-bold font-poppins text-islamic-dark whitespace-nowrap">
+              <span 
+                className="text-base font-bold font-poppins text-islamic-dark whitespace-nowrap"
+                style={{ letterSpacing: '-0.058em' }} // Same tight spacing as logo
+              >
                 real time sermon translation
               </span>
             )}
@@ -100,30 +109,45 @@ export function MobileNavigation() {
         </div>
       </div>
 
-      {/* Completely Separate Fixed Hamburger Button - Only show when scrolled */}
+      {/* Language Selector and Hamburger Button - Only show when scrolled */}
       {isScrolled && (
-        <button
-          className="lg:hidden fixed right-4 z-[101] p-2 rounded-lg transition-colors hover:bg-gray-100/20"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-          type="button"
-          style={{
-            // Use fixed pixel positioning to prevent any movement
-            position: 'fixed',
-            top: '8px', // Adjusted to center: (56px - 40px) / 2 = 8px
-            right: '16px',
-            width: '40px',
-            height: '40px',
-          }}
-        >
-          <div className="w-6 h-6 flex items-center justify-center">
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-islamic-dark" />
-            ) : (
-              <Menu className="w-6 h-6 text-islamic-dark" />
-            )}
+        <>
+          {/* Language Selector */}
+          <div
+            className="lg:hidden fixed z-[101]"
+            style={{
+              position: 'fixed',
+              top: '8px',
+              right: '64px', // Position to the left of hamburger menu
+            }}
+          >
+            <LanguageSelector />
           </div>
-        </button>
+          
+          {/* Hamburger Button */}
+          <button
+            className="lg:hidden fixed right-4 z-[101] p-2 rounded-lg transition-colors hover:bg-gray-100/20"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+            type="button"
+            style={{
+              // Use fixed pixel positioning to prevent any movement
+              position: 'fixed',
+              top: '8px', // Adjusted to center: (56px - 40px) / 2 = 8px
+              right: '16px',
+              width: '40px',
+              height: '40px',
+            }}
+          >
+            <div className="w-6 h-6 flex items-center justify-center">
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-islamic-dark" />
+              ) : (
+                <Menu className="w-6 h-6 text-islamic-dark" />
+              )}
+            </div>
+          </button>
+        </>
       )}
 
       {/* Mobile Menu Dropdown */}
@@ -154,28 +178,16 @@ export function MobileNavigation() {
               </motion.a>
             ))}
             
-            <div className="mt-4 pt-4 border-t border-gray-100 space-y-2">
-              <Button 
-                variant="outline" 
-                className="w-full py-5 text-sm font-poppins"
-                onClick={() => {
-                  alert('Login functionality coming soon!')
-                  setIsMobileMenuOpen(false)
-                }}
-              >
-                Login
-              </Button>
+            <div className="mt-4 pt-4 border-t border-gray-100">
               <Button 
                 className="w-full bg-islamic-primary hover:bg-islamic-primary/90 text-white py-5 text-sm font-poppins"
                 onClick={() => {
                   setIsMobileMenuOpen(false)
-                  const element = document.getElementById('pricing')
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }
+                  // Navigate to dashboard or external dashboard URL
+                  window.location.href = '/dashboard' // Update this URL to your actual dashboard
                 }}
               >
-                Get Started
+                Dashboard
               </Button>
             </div>
           </div>
