@@ -234,7 +234,6 @@ export const nl: TranslationStructure = {
       paragraph3: 'En dit is niet alleen voor niet-Arabisch sprekenden. Veel Arabisch sprekenden, vooral jongere generaties of degenen die alleen een dialect spreken, hebben ook moeite met fusha. Deze tool overbrugt die kloof en helpt zowel Arabisch- als niet-Arabisch sprekenden dichter bij de taal van de Koran te komen.',
       paragraph4: 'Ik heb gezien hoe mijn neven en nichten thuis vloeiend Engels leerden door simpelweg Engelse films met Arabische ondertiteling te kijken. Met Bayaan, InshaAllah, kunnen we dat omkeren - mensen fusha Arabisch laten absorberen terwijl ze de khutbah volgen met duidelijke, live ondertitels.',
     },
-    cta: 'sluit je aan bij onze missie', // 'join our mission'
     attribution: '— persoonlijk verhaal van de oprichter', // '— Founder\'s personal story'
   },
 
