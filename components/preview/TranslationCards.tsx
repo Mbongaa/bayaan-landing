@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Globe } from "lucide-react"
 
@@ -23,6 +23,17 @@ const languageLabels = {
 
 export default function TranslationCards({ translations, isDark, colors }: TranslationCardsProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   // Auto-scroll to bottom when new translations arrive (like original)
   useEffect(() => {
@@ -34,7 +45,7 @@ export default function TranslationCards({ translations, isDark, colors }: Trans
   return (
     <div 
       ref={containerRef}
-      className="flex-1 overflow-y-auto px-6 pb-6 space-y-4 scroll-smooth scrollbar-hide"
+      className={`flex-1 overflow-y-auto ${isMobile ? 'px-3' : 'px-6'} pb-6 space-y-4 scroll-smooth scrollbar-hide`}
     >
       <AnimatePresence mode="popLayout">
         {translations.length > 0 ? (
@@ -60,7 +71,7 @@ export default function TranslationCards({ translations, isDark, colors }: Trans
                 className="relative"
               >
                 <div 
-                  className="rounded-2xl p-6 backdrop-blur-sm transition-all duration-300"
+                  className={`rounded-2xl ${isMobile ? 'p-4' : 'p-6'} backdrop-blur-sm transition-all duration-300`}
                   style={{ 
                     backgroundColor: isLatest ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.6)',
                     border: `1px solid ${isLatest ? 'rgba(10, 58, 58, 0.2)' : 'rgba(10, 58, 58, 0.1)'}`,

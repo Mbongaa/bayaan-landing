@@ -305,8 +305,8 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
                       top: '50%',
                       left: '50%',
                       transform: 'translate(-50%, -50%)',
-                      border: '2px solid rgba(212, 165, 116, 0.6)',
-                      boxShadow: '0 0 20px rgba(212, 165, 116, 0.3)'
+                      border: '2px solid rgba(239, 68, 68, 0.6)',
+                      boxShadow: '0 0 20px rgba(239, 68, 68, 0.3)'
                     }}
                     initial={{ scale: 1, opacity: 0 }}
                     animate={{
@@ -335,7 +335,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
                   top: '50%',
                   left: '50%',
                   transform: 'translate(-50%, -50%)',
-                  background: 'radial-gradient(circle, rgba(212, 165, 116, 0.5) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(239, 68, 68, 0.5) 0%, transparent 70%)',
                   filter: 'blur(10px)',
                   willChange: 'transform, opacity'
                 }}
@@ -410,7 +410,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
       </AnimatePresence>
 
       {/* Main container with exact padding like original */}
-      <div className="relative h-full flex flex-col p-4 md:p-6">
+      <div className="relative h-full flex flex-col p-3 md:p-6">
         
         {/* Top Section - Arabic Transcription (reduced height and subtler) */}
         <motion.div 
@@ -431,7 +431,7 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
         </motion.div>
 
         {/* Bottom Section - Camera + Translations (remaining height) */}
-        <div className="h-[calc(100%-13vh-1rem)] flex flex-col lg:flex-row gap-4">
+        <div className="h-[calc(100%-13vh-1rem)] flex flex-col lg:flex-row gap-3 lg:gap-4">
           
           {/* Camera Feed (40% width on desktop, full on mobile) */}
           <motion.div 
@@ -461,7 +461,8 @@ export default function PublicDisplayPreview({ className = "", isDark = false }:
           <motion.div 
             className="h-full flex flex-col overflow-hidden transition-[width] duration-75"
             style={{
-              width: !isMobile ? '60%' : '100%'
+              width: !isMobile ? '60%' : '100%',
+              maxWidth: isMobile ? '100%' : 'none'
             }}
             initial={{ opacity: 0, scale: 0.95, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}

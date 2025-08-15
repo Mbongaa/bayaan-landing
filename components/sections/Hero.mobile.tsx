@@ -42,7 +42,7 @@ export function Hero() {
     },
   ]
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-islamic-light pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-islamic-light" style={{ paddingTop: '50px' }}>
       {/* Islamic geometric pattern background - lighter on mobile */}
       <div className="absolute inset-0 islamic-pattern opacity-20 md:opacity-30" />
       
@@ -189,7 +189,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-20 md:mt-24"
+          className="mt-10 md:mt-24"
         >
           {/* Section header - mobile optimized */}
           <div className="text-center mb-8 px-4">
