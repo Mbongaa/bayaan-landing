@@ -227,8 +227,8 @@ export function MobileNavigation() {
                 className="w-full bg-islamic-primary hover:bg-islamic-primary/90 text-white py-5 text-sm font-poppins"
                 onClick={() => {
                   setIsMobileMenuOpen(false)
-                  // Navigate to dashboard or external dashboard URL
-                  window.location.href = '/dashboard' // Update this URL to your actual dashboard
+                  // Navigate to external dashboard auth page
+                  window.location.href = 'https://www.bayaan.app/auth'
                 }}
               >
                 Dashboard

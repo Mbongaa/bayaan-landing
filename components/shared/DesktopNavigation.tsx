@@ -223,8 +223,8 @@ export function DesktopNavigation() {
             <Button 
               className="font-poppins bg-islamic-primary hover:bg-islamic-primary/90 text-white rounded-full px-6"
               onClick={() => {
-                // Navigate to dashboard or external dashboard URL
-                window.location.href = '/dashboard' // Update this URL to your actual dashboard
+                // Navigate to external dashboard auth page
+                window.location.href = 'https://www.bayaan.app/auth'
               }}
             >
               {t.navigation.dashboard}
